@@ -5,7 +5,7 @@ import { categories } from '../../data/categories'
 import { searchSuggestions, searchPlaceholder } from '../../data/content'
 import { useDebouncedValue } from '../../hooks'
 import { useStore } from '../../store/StoreContext'
-import { formatPrice, productSearchText } from '../../utils'
+import { categoryLabel, formatPrice, productSearchText } from '../../utils'
 import { CloseIcon, SearchIcon, ArrowRightIcon } from '../ui/Icons'
 import { ImageWithFallback, Rating } from '../ui/Primitives'
 
@@ -147,7 +147,7 @@ export function SearchOverlay() {
                     <span className="min-w-0 flex-1">
                       <span className="block truncate font-display text-base">{product.name}</span>
                       <span className="mt-0.5 block truncate text-[11px] uppercase tracking-wider text-noir/45">
-                        {product.category}
+                        {categoryLabel(product.category)}
                       </span>
                       <span className="mt-1.5 flex items-center justify-between gap-2">
                         <span className="text-sm font-medium num">{formatPrice(product.price)}</span>

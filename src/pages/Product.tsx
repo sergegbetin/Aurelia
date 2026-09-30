@@ -3,7 +3,7 @@ import { Link, Navigate, useParams, useNavigate } from 'react-router-dom'
 import { getProduct, relatedProducts } from '../data/products'
 import { usePage } from '../hooks/usePage'
 import { useStore } from '../store/StoreContext'
-import { computeDiscount, formatPriceFull, cn } from '../utils'
+import { computeDiscount, formatPriceFull, cn, categoryLabel } from '../utils'
 import { ProductCard } from '../components/ui/ProductCard'
 import {
   ArrowLink,
@@ -153,7 +153,7 @@ export function ProductPage() {
             <li aria-hidden>›</li>
             <li>
               <Link to={`/category/${product.category}`} className="hover:text-gold-deep">
-                {product.category}
+                {categoryLabel(product.category)}
               </Link>
             </li>
             <li aria-hidden>›</li>
@@ -236,7 +236,7 @@ export function ProductPage() {
           {/* Info */}
           <div className="flex flex-col gap-5 lg:pt-2">
             <div className="flex items-center justify-between gap-4">
-              <span className="eyebrow">{product.category}</span>
+              <span className="eyebrow">{categoryLabel(product.category)}</span>
               <span className="text-[11px] uppercase tracking-wider text-noir/45">
                 Réf. {product.id}
               </span>
