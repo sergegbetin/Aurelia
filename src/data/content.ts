@@ -3,8 +3,8 @@ import { products } from './products'
 
 export const brand = {
   name: 'AURELIA',
-  signature: 'Start the year beautifully.',
-  campaign: 'AURELIA NEW YEAR COLLECTION',
+  signature: 'Commencez l’année avec beauté.',
+  campaign: 'AURELIA — COLLECTION DU NOUVEL AN',
   year: 2027,
 }
 
@@ -21,55 +21,55 @@ export const mainNav: NavItem[] = [
   { label: 'Boutique', to: '/shop' },
   { label: 'Nouveautés', to: '/shop?view=new' },
   { label: 'Cadeaux', to: '/category/gifts' },
-  { label: 'Best Sellers', to: '/shop?view=bestsellers' },
-  { label: 'New Year Collection', to: '/shop?view=collection' },
+  { label: 'Meilleures ventes', to: '/shop?view=bestsellers' },
+  { label: 'Collection du Nouvel An', to: '/shop?view=collection' },
 ]
 
 export const footerColumns: { title: string; links: NavItem[] }[] = [
   {
-    title: 'Shop',
+    title: 'Boutique',
     links: [
-      { label: 'All products', to: '/shop' },
-      { label: 'New arrivals', to: '/shop?view=new' },
-      { label: 'Best sellers', to: '/shop?view=bestsellers' },
-      { label: 'New Year Collection', to: '/shop?view=collection' },
+      { label: 'Tous les produits', to: '/shop' },
+      { label: 'Nouveautés', to: '/shop?view=new' },
+      { label: 'Meilleures ventes', to: '/shop?view=bestsellers' },
+      { label: 'Collection du Nouvel An', to: '/shop?view=collection' },
     ],
   },
   {
-    title: 'Categories',
+    title: 'Catégories',
     links: [
-      { label: 'Beauty', to: '/category/beauty' },
-      { label: 'Fashion', to: '/category/fashion' },
-      { label: 'Tech', to: '/category/tech' },
-      { label: 'Home', to: '/category/home' },
-      { label: 'Accessories', to: '/category/accessories' },
-      { label: 'Gifts', to: '/category/gifts' },
+      { label: 'Beauté', to: '/category/beauty' },
+      { label: 'Mode', to: '/category/fashion' },
+      { label: 'High-tech', to: '/category/tech' },
+      { label: 'Maison', to: '/category/home' },
+      { label: 'Accessoires', to: '/category/accessories' },
+      { label: 'Cadeaux', to: '/category/gifts' },
     ],
   },
   {
-    title: 'Customer care',
+    title: 'Service client',
     links: [
       { label: 'Contact', to: '/shop' },
       { label: 'FAQ', to: '/shop' },
-      { label: 'Shipping', to: '/shop' },
-      { label: 'Returns', to: '/shop' },
+      { label: 'Livraison', to: '/shop' },
+      { label: 'Retours', to: '/shop' },
     ],
   },
   {
-    title: 'Legal',
+    title: 'Informations légales',
     links: [
-      { label: 'Privacy', to: '/shop' },
-      { label: 'Terms', to: '/shop' },
+      { label: 'Confidentialité', to: '/shop' },
+      { label: 'Conditions générales', to: '/shop' },
       { label: 'Cookies', to: '/shop' },
     ],
   },
 ]
 
 export const trustItems = [
-  { title: 'Secure payment', detail: 'Paiement sécurisé', icon: 'shield' },
-  { title: 'Fast delivery', detail: 'Livraison fiable', icon: 'truck' },
-  { title: 'Easy returns', detail: 'Retours simples', icon: 'refresh' },
-  { title: 'Customer support', detail: 'Support client', icon: 'chat' },
+  { title: 'Paiement sécurisé', detail: 'Vos données de paiement restent protégées', icon: 'shield' },
+  { title: 'Livraison fiable', detail: 'Votre commande est suivie jusqu’à vous', icon: 'truck' },
+  { title: 'Retours simples', detail: 'Un retour facile si besoin', icon: 'refresh' },
+  { title: 'Service client', detail: 'Une équipe à votre écoute', icon: 'chat' },
 ]
 
 export interface GiftGuide {
@@ -83,56 +83,56 @@ export interface GiftGuide {
 export const giftGuides: GiftGuide[] = [
   {
     slug: 'for-her',
-    title: 'For Her',
-    description: 'Silk, scent and small rituals she will actually use every day.',
+    title: 'Pour elle',
+    description: 'De la soie, un parfum et de petits rituels qu’elle utilisera chaque jour.',
     image: '/images/gift-for-her.jpg',
-    query: 'For her',
+    query: 'Pour elle',
   },
   {
     slug: 'for-him',
-    title: 'For Him',
-    description: 'Considered pieces for the man who says he wants nothing.',
+    title: 'Pour lui',
+    description: 'Des pièces choisies avec soin pour l’homme qui dit ne rien vouloir.',
     image: '/images/gift-for-him.jpg',
-    query: 'For him',
+    query: 'Pour lui',
   },
   {
     slug: 'for-couples',
-    title: 'For Couples',
-    description: 'Shared moments — glassware, candles and slow evenings.',
+    title: 'Pour deux',
+    description: 'Des moments à partager — verrerie, bougies et soirées au ralenti.',
     image: '/images/gift-for-couples.jpg',
-    query: 'For couples',
+    query: 'Pour deux',
   },
   {
     slug: 'for-friends',
-    title: 'For Friends',
-    description: 'Easy, joyful gifts that never feel like an afterthought.',
+    title: 'Pour les amis',
+    description: 'Des cadeaux simples et joyeux qui ne ressemblent jamais à une idée de dernière minute.',
     image: '/images/gift-for-friends.jpg',
-    query: 'For friends',
+    query: 'Pour les amis',
   },
   {
     slug: 'for-family',
-    title: 'For Family',
-    description: 'Warm, generous presents for the people who raised you.',
+    title: 'Pour la famille',
+    description: 'Des cadeaux chaleureux et généreux pour ceux qui vous ont élevé.',
     image: '/images/gift-for-family.jpg',
-    query: 'For family',
+    query: 'Pour la famille',
   },
   {
     slug: 'for-yourself',
-    title: 'For Yourself',
-    description: 'The rule of the year: you are allowed to keep one.',
+    title: 'Pour vous-même',
+    description: 'La règle de l’année : vous avez le droit d’en garder un pour vous.',
     image: '/images/gift-for-yourself.jpg',
-    query: 'For yourself',
+    query: 'Pour vous-même',
   },
 ]
 
 export const searchSuggestions = [
-  'New Year gifts',
-  'Best sellers',
-  'Beauty',
-  'Tech',
-  'Fashion',
-  'Candles',
-  'Watches',
+  'Cadeaux du Nouvel An',
+  'Meilleures ventes',
+  'Beauté',
+  'High-tech',
+  'Mode',
+  'Bougies',
+  'Montres',
 ]
 
 /** Demo-only testimonials — clearly marked as demonstration content. */
@@ -141,43 +141,43 @@ export const testimonials = [
     name: 'Sophie L.',
     initials: 'SL',
     rating: 5,
-    date: 'January 6, 2027',
-    product: 'The New Year Gift Box',
-    body: 'Everything arrived in one beautiful box with a handwritten card. It felt like opening a boutique, not a parcel.',
+    date: '6 janvier 2027',
+    product: 'Coffret Cadeau du Nouvel An',
+    body: 'Tout est arrivé dans un seul coffret magnifique, avec une carte manuscrite. On avait l’ouverture d’une boutique, pas celle d’un colis.',
   },
   {
     name: 'Marc D.',
     initials: 'MD',
     rating: 5,
-    date: 'January 2, 2027',
-    product: 'Aurora Chrono Watch',
-    body: 'The watch is genuinely elegant and the delivery was faster than promised. The website made choosing effortless.',
+    date: '2 janvier 2027',
+    product: 'Montre Aurora Chrono',
+    body: 'La montre est vraiment élégante et la livraison plus rapide que promis. Le site a rendu le choix parfaitement simple.',
   },
   {
     name: 'Nadia K.',
     initials: 'NK',
     rating: 4,
-    date: 'December 30, 2026',
-    product: 'Solstice Marble Candle Trio',
-    body: 'Beautiful scents and a very calm, tasteful shopping experience. I came back for the second set the same week.',
+    date: '30 décembre 2026',
+    product: 'Trio de bougies Solstice en marbre',
+    body: 'De beaux parfums et une expérience d’achat très calme, au goût sûr. Je suis revenue pour un deuxième coffret dans la même semaine.',
   },
   {
     name: 'Thomas R.',
     initials: 'TR',
     rating: 5,
-    date: 'December 28, 2026',
-    product: 'Aura Pro Wireless Earbuds',
-    body: 'Ordered on the 27th, received on the 29th, gift-wrapped perfectly. Support answered my question in minutes.',
+    date: '28 décembre 2026',
+    product: 'Écouteurs sans fil Aura Pro',
+    body: 'Commandé le 27, reçu le 29, emballé parfaitement pour l’offrir. Le service client a répondu à ma question en quelques minutes.',
   },
 ]
 
 export const instagramTiles = [
-  { image: '/images/social-1.jpg', caption: 'First light of the year' },
-  { image: '/images/social-2.jpg', caption: 'Wrapped with care' },
-  { image: '/images/social-3.jpg', caption: 'Table for the night' },
-  { image: '/images/social-4.jpg', caption: 'Something new to wear' },
-  { image: '/images/social-5.jpg', caption: 'Slow morning ritual' },
-  { image: '/images/social-6.jpg', caption: 'Warm rooms, soft light' },
+  { image: '/images/social-1.jpg', caption: 'Première lumière de l’année' },
+  { image: '/images/social-2.jpg', caption: 'Emballé avec soin' },
+  { image: '/images/social-3.jpg', caption: 'La table de la nuit' },
+  { image: '/images/social-4.jpg', caption: 'Quelque chose de neuf à porter' },
+  { image: '/images/social-5.jpg', caption: 'Rituel de matin doux' },
+  { image: '/images/social-6.jpg', caption: 'Pièces chaudes, lumière douce' },
 ]
 
 export const paymentMethods = ['Visa', 'Mastercard', 'Amex', 'PayPal', 'Apple Pay', 'Google Pay']
@@ -189,7 +189,7 @@ export const socialLinks = [
   { label: 'YouTube', to: '/' },
 ]
 
-export const searchPlaceholder = 'Search AURELIA'
+export const searchPlaceholder = 'Rechercher sur AURELIA'
 
 /** Curated homepage selections */
 export const newYearSpecials: Product[] = products
@@ -216,10 +216,10 @@ export const featuredProduct: Product =
   products.find((p) => p.slug === 'aurora-chrono-watch') ?? products[0]
 
 export const editorialCategories = [
-  { slug: 'fashion', label: 'Fashion', line: 'Soft tailoring & knitwear' },
-  { slug: 'beauty', label: 'Beauty', line: 'Scent, skin & ritual' },
-  { slug: 'tech', label: 'Tech', line: 'Audio, wearables & light' },
-  { slug: 'home', label: 'Home', line: 'Candles, textiles & objects' },
-  { slug: 'accessories', label: 'Accessories', line: 'Watches, bags & jewellery' },
-  { slug: 'gifts', label: 'Gifts', line: 'Boxes ready to give' },
+  { slug: 'fashion', label: 'Mode', line: 'Coupes douces et mailles' },
+  { slug: 'beauty', label: 'Beauté', line: 'Parfum, soin et rituel' },
+  { slug: 'tech', label: 'High-tech', line: 'Audio, wearables et lumière' },
+  { slug: 'home', label: 'Maison', line: 'Bougies, textiles et objets' },
+  { slug: 'accessories', label: 'Accessoires', line: 'Montres, sacs et bijoux' },
+  { slug: 'gifts', label: 'Cadeaux', line: 'Coffrets prêts à offrir' },
 ]

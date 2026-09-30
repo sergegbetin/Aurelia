@@ -42,8 +42,8 @@ export function useCountdownParts() {
   const { days, hours, minutes } = useCountdown()
   return useMemo(
     () => [
-      { label: 'Days', value: String(days) },
-      { label: 'Hours', value: pad(hours) },
+      { label: 'Jours', value: String(days) },
+      { label: 'Heures', value: pad(hours) },
       { label: 'Minutes', value: pad(minutes) },
     ],
     [days, hours, minutes],

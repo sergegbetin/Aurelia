@@ -43,14 +43,14 @@ export function CartDrawer() {
         <div className="flex items-center gap-3">
           <BagIcon size={18} />
           <h2 id="cart-drawer-title" className="text-[12px] uppercase tracking-luxe">
-            Your cart
+            Votre panier
           </h2>
           <span className="num text-[12px] text-noir/50">({totals.itemCount})</span>
         </div>
         <button
           type="button"
           onClick={close}
-          aria-label="Close cart"
+          aria-label="Fermer le panier"
           className="flex h-9 w-9 items-center justify-center border border-noir/15 transition-colors hover:bg-noir hover:text-ivory"
         >
           <CloseIcon size={17} />
@@ -63,9 +63,9 @@ export function CartDrawer() {
             <BagIcon size={26} />
           </div>
           <div>
-            <p className="font-display text-2xl font-light">Your cart is waiting</p>
+            <p className="font-display text-2xl font-light">Votre panier vous attend</p>
             <p className="mt-2 text-sm text-noir/60">
-              Discover the New Year Collection and fill it with something beautiful.
+              Découvrez la Collection du Nouvel An et remplissez-le de belles pièces.
             </p>
           </div>
           <button
@@ -76,7 +76,7 @@ export function CartDrawer() {
               navigate('/shop')
             }}
           >
-            Explore the collection
+            Découvrir la collection
           </button>
         </div>
       ) : (
@@ -85,8 +85,8 @@ export function CartDrawer() {
             <div className="flex items-center justify-between text-[11px] uppercase tracking-wider text-noir/60">
               <span>
                 {totals.freeShippingGap > 0
-                  ? `${formatPriceFull(totals.freeShippingGap)} away from free delivery`
-                  : 'Free standard delivery unlocked'}
+                  ? `Encore ${formatPriceFull(totals.freeShippingGap)} pour la livraison offerte`
+                  : 'Livraison standard offerte débloquée'}
               </span>
               <span className="num">{Math.round(progress)}%</span>
             </div>
@@ -105,7 +105,7 @@ export function CartDrawer() {
                   to={`/product/${line.slug}`}
                   onClick={close}
                   className="shrink-0"
-                  aria-label={`View ${line.name}`}
+                  aria-label={`Voir ${line.name}`}
                 >
                   <ImageWithFallback
                     src={line.image}
@@ -126,7 +126,7 @@ export function CartDrawer() {
                     <button
                       type="button"
                       onClick={() => removeItem(line.key)}
-                      aria-label={`Remove ${line.name} from cart`}
+                      aria-label={`Supprimer ${line.name} du panier`}
                       className="text-noir/40 transition-colors hover:text-bordeaux"
                     >
                       <TrashIcon size={15} />
@@ -155,17 +155,17 @@ export function CartDrawer() {
           <div className="border-t border-noir/10 px-5 py-5">
             <form onSubmit={onApply} className="flex gap-2">
               <label htmlFor="promo-drawer" className="sr-only">
-                Promo code
+                Code promo
               </label>
               <input
                 id="promo-drawer"
                 className="field py-2.5 text-[13px] uppercase tracking-wider"
-                placeholder="Promo code"
+                placeholder="Code promo"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
               />
               <button type="submit" className="chip shrink-0 px-4">
-                Apply
+                Appliquer
               </button>
             </form>
 
@@ -182,7 +182,7 @@ export function CartDrawer() {
             )}
             {!feedback && (
               <p className="mt-2 text-[11px] text-noir/45">
-                Try <span className="uppercase">AURELIA10</span> or{' '}
+                Essayez <span className="uppercase">AURELIA10</span> ou{' '}
                 <span className="uppercase">NEWYEAR15</span>
               </p>
             )}
@@ -196,7 +196,7 @@ export function CartDrawer() {
                   type="button"
                   onClick={removePromo}
                   className="text-noir/50 hover:text-bordeaux"
-                  aria-label="Remove promo code"
+                  aria-label="Supprimer le code promo"
                 >
                   <CloseIcon size={14} />
                 </button>
@@ -205,19 +205,19 @@ export function CartDrawer() {
 
             <dl className="mt-5 space-y-2 text-sm">
               <div className="flex justify-between">
-                <dt className="text-noir/60">Subtotal</dt>
+                <dt className="text-noir/60">Sous-total</dt>
                 <dd className="num font-medium">{formatPriceFull(totals.subtotal)}</dd>
               </div>
               {totals.discount > 0 && (
                 <div className="flex justify-between text-gold-deep">
-                  <dt>Discount</dt>
+                  <dt>Réduction</dt>
                   <dd className="num">−{formatPriceFull(totals.discount)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-noir/60">Delivery</dt>
+                <dt className="text-noir/60">Livraison</dt>
                 <dd className="num">
-                  {totals.shipping === 0 ? 'Free' : formatPriceFull(totals.shipping)}
+                  {totals.shipping === 0 ? 'Offert' : formatPriceFull(totals.shipping)}
                 </dd>
               </div>
               <div className="flex justify-between border-t border-noir/10 pt-3 text-base">
@@ -234,7 +234,7 @@ export function CartDrawer() {
                 navigate('/checkout')
               }}
             >
-              Proceed to checkout
+              Passer au paiement
             </button>
             <div className="mt-3 flex flex-col items-center gap-2">
               <Link
@@ -242,10 +242,10 @@ export function CartDrawer() {
                 onClick={close}
                 className="text-[11px] uppercase tracking-wider2 text-noir/60 underline-offset-4 hover:underline"
               >
-                View full cart
+                Voir le panier
               </Link>
               <span className="flex items-center gap-1.5 text-[11px] text-noir/50">
-                <LockIcon size={13} /> Secure checkout
+                <LockIcon size={13} /> Paiement sécurisé
               </span>
             </div>
           </div>

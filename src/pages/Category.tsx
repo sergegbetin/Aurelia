@@ -14,7 +14,7 @@ export function CategoryPage() {
     <>
       <ProductExplorer
         key={category.slug}
-        eyebrow="Category"
+        eyebrow="Catégorie"
         title={category.name}
         titleNode={
           <span className="flex flex-col gap-3">
@@ -32,16 +32,16 @@ export function CategoryPage() {
       <section className="border-t border-noir/10 bg-ivory-soft">
         <div className="container-luxe flex flex-col items-center gap-6 py-14 text-center">
           <Reveal className="flex flex-col items-center gap-4">
-            <span className="eyebrow">Keep exploring</span>
+            <span className="eyebrow">Poursuivez la découverte</span>
             <p className="max-w-xl font-display text-2xl font-light text-noir/85">
-              Every category is curated for the same idea — start the year beautifully.
+              Chaque catégorie est pensée dans le même esprit — commencez l’année avec beauté.
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <Link to="/shop?view=new" className="btn-primary">
-                New arrivals <ArrowRightIcon size={15} />
+                Nouveautés <ArrowRightIcon size={15} />
               </Link>
               <Link to="/shop?category=gifts" className="btn-outline">
-                Gift guide
+                Guide des cadeaux
               </Link>
             </div>
           </Reveal>

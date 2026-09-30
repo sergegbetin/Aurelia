@@ -5,7 +5,7 @@ import { categories } from '../../data/categories'
 import { searchSuggestions, searchPlaceholder } from '../../data/content'
 import { useDebouncedValue } from '../../hooks'
 import { useStore } from '../../store/StoreContext'
-import { formatPrice } from '../../utils'
+import { formatPrice, productSearchText } from '../../utils'
 import { CloseIcon, SearchIcon, ArrowRightIcon } from '../ui/Icons'
 import { ImageWithFallback, Rating } from '../ui/Primitives'
 
@@ -26,20 +26,7 @@ export function SearchOverlay() {
   const results = useMemo(() => {
     const term = debounced.trim().toLowerCase()
     if (!term) return []
-    return products
-      .filter((product) =>
-        [
-          product.name,
-          product.category,
-          product.tagline,
-          product.description,
-          ...product.tags,
-        ]
-          .join(' ')
-          .toLowerCase()
-          .includes(term),
-      )
-      .slice(0, 6)
+    return products.filter((product) => productSearchText(product).includes(term)).slice(0, 6)
   }, [debounced])
 
   const showEmpty = debounced.trim().length > 0 && results.length === 0
@@ -52,7 +39,7 @@ export function SearchOverlay() {
   }
 
   return (
-    <div className="fixed inset-0 z-[75]" role="dialog" aria-modal="true" aria-label="Search AURELIA">
+    <div className="fixed inset-0 z-[75]" role="dialog" aria-modal="true" aria-label="Rechercher sur AURELIA">
       <div
         className="absolute inset-0 bg-noir/70 backdrop-blur-sm animate-fadeIn"
         onClick={() => setSearchOpen(false)}
@@ -65,7 +52,7 @@ export function SearchOverlay() {
             <button
               type="button"
               onClick={() => setSearchOpen(false)}
-              aria-label="Close search"
+              aria-label="Fermer"
               className="flex h-10 w-10 items-center justify-center border border-noir/15 transition-colors hover:bg-noir hover:text-ivory"
             >
               <CloseIcon />
@@ -85,15 +72,15 @@ export function SearchOverlay() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="What are you looking for?"
-              aria-label="Search products"
+              placeholder="Que recherchez-vous ?"
+              aria-label="Rechercher des produits"
               className="w-full bg-transparent font-display text-2xl font-light text-noir placeholder:text-noir/35 focus:outline-none sm:text-4xl"
             />
             <button
               type="submit"
               className="hidden shrink-0 items-center gap-2 text-[11px] uppercase tracking-wider2 text-noir/60 transition-colors hover:text-gold-deep sm:flex"
             >
-              Search <ArrowRightIcon size={16} />
+              Rechercher <ArrowRightIcon size={16} />
             </button>
           </form>
 
@@ -118,7 +105,7 @@ export function SearchOverlay() {
                 </ul>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-luxe text-noir/45">Categories</p>
+                <p className="text-[11px] uppercase tracking-luxe text-noir/45">Catégories</p>
                 <ul className="mt-4 flex flex-wrap gap-2.5">
                   {categories.map((category) => (
                     <li key={category.slug}>
@@ -176,7 +163,7 @@ export function SearchOverlay() {
                   className="btn-outline w-full"
                   onClick={() => submitSearch(query)}
                 >
-                  See all results for “{debounced}”
+                  Voir tous les résultats pour « {debounced} »
                 </button>
               </li>
             </ul>
@@ -184,10 +171,12 @@ export function SearchOverlay() {
 
           {showEmpty && (
             <div className="mt-10 border border-noir/10 bg-white/60 p-8 text-center">
-              <p className="font-display text-2xl font-light">No results found</p>
+              <p className="font-display text-2xl font-light">
+                Aucun résultat pour « {debounced} »
+              </p>
               <p className="mx-auto mt-3 max-w-md text-sm text-noir/60">
-                Nothing matches “{debounced}”. Try one of these instead — our most searched edits of
-                the season.
+                Aucun article ne correspond à « {debounced} ». Essayez plutôt l’une de nos
+                sélections les plus recherchées de la saison.
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-2.5">
                 {searchSuggestions.slice(0, 5).map((suggestion) => (
@@ -203,7 +192,7 @@ export function SearchOverlay() {
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <button type="button" className="btn-outline" onClick={() => setQuery('')}>
-                  Clear search
+                  Effacer la recherche
                 </button>
                 <button
                   type="button"
@@ -214,7 +203,7 @@ export function SearchOverlay() {
                     navigate('/shop')
                   }}
                 >
-                  Browse the collection
+                  Parcourir la collection
                 </button>
               </div>
             </div>

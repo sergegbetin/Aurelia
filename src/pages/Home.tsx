@@ -21,8 +21,8 @@ import {
 
 export function Home() {
   usePage(
-    'AURELIA — New Year Collection | Start the Year Beautifully',
-    'Discover the AURELIA New Year Collection — premium gifts, lifestyle, beauty, fashion, tech and home products for a beautiful new beginning.',
+    'AURELIA — Collection du Nouvel An | Commencez l’année avec beauté',
+    'Découvrez la Collection du Nouvel An AURELIA — cadeaux premium, univers de vie, beauté, mode, high-tech et maison pour un beau nouveau départ.',
   )
 
   return (

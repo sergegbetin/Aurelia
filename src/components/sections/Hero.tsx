@@ -33,31 +33,31 @@ export function Hero() {
             </div>
 
             <h1 className="font-display text-display-lg font-light uppercase text-noir">
-              A New Year.
+              Une nouvelle année.
               <br />
-              <span className="italic text-gold-deep">A New You.</span>
+              <span className="italic text-gold-deep">Un nouveau vous.</span>
             </h1>
 
             <p className="max-w-md text-base leading-relaxed text-noir/65 sm:text-lg">
-              Discover beautiful products to celebrate new beginnings — gifts, beauty, fashion, tech
-              and home, curated for the way you want this year to feel.
+              Découvrez de belles pièces pour célébrer les commencements — cadeaux, beauté, mode,
+              high-tech et maison, choisis pour la façon dont vous voulez vivre cette année.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link to="/shop?view=collection" className="btn-primary btn-shine">
-                Shop the collection <ArrowRightIcon size={16} />
+                Voir la collection <ArrowRightIcon size={16} />
               </Link>
               <Link to="/shop?category=gifts" className="btn-outline">
-                Find the perfect gift
+                Trouver le cadeau idéal
               </Link>
             </div>
 
             <div className="mt-2 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-noir/10 pt-6 text-[11px] uppercase tracking-wider2 text-noir/50">
-              <span>New Year Collection {brand.year}</span>
+              <span>Collection du Nouvel An {brand.year}</span>
               <span className="hidden h-3 w-px bg-noir/15 sm:block" />
-              <span>Free gift wrapping</span>
+              <span>Emballage cadeau offert</span>
               <span className="hidden h-3 w-px bg-noir/15 sm:block" />
-              <span>Delivery 2–5 days</span>
+              <span>Livraison en 2 à 5 jours</span>
             </div>
           </Reveal>
         </div>
@@ -68,7 +68,7 @@ export function Hero() {
               <div className="grain relative overflow-hidden">
                 <ImageWithFallback
                   src="/images/hero-main.jpg"
-                  alt="AURELIA New Year gift boxes and lifestyle objects in warm golden light"
+                  alt="Coffrets cadeaux du Nouvel An et objets de vie AURELIA dans une lumière dorée chaleureuse"
                   eager
                   monogram="A"
                   className="aspect-[4/5] w-full sm:aspect-[5/5] lg:aspect-[4/5]"
@@ -118,29 +118,29 @@ export function Hero() {
               <div className="flex items-center gap-3">
                 <ImageWithFallback
                   src="/images/products/the-new-year-gift-box-1.jpg"
-                  alt="The New Year Gift Box"
+                  alt="Coffret Cadeau du Nouvel An"
                   className="h-16 w-14 shrink-0 bg-cream"
                   monogram="G"
                 />
                 <div>
                   <p className="text-[10px] uppercase tracking-luxe text-gold-deep">
-                    Signature gift
+                    Cadeau signature
                   </p>
                   <p className="mt-1 font-display text-base leading-tight">
-                    The New Year Gift Box
+                    Coffret Cadeau du Nouvel An
                   </p>
                   <Link
                     to="/product/the-new-year-gift-box"
                     className="mt-1.5 inline-flex items-center gap-1 text-[11px] uppercase tracking-wider text-noir/60 hover:text-gold-deep"
                   >
-                    Discover <ArrowRightIcon size={12} />
+                    Découvrir <ArrowRightIcon size={12} />
                   </Link>
                 </div>
               </div>
             </Reveal>
 
             <div className="absolute -right-1 top-6 hidden items-center gap-2 border border-gold/40 bg-ivory/90 px-3.5 py-2 text-[10px] uppercase tracking-luxe text-gold-deep backdrop-blur sm:flex">
-              <SparkleIcon size={14} /> {brand.year} Edition
+              <SparkleIcon size={14} /> Édition {brand.year}
             </div>
           </div>
         </div>
@@ -150,10 +150,10 @@ export function Hero() {
 }
 
 const units = [
-  { key: 'days', label: 'Days' },
-  { key: 'hours', label: 'Hours' },
+  { key: 'days', label: 'Jours' },
+  { key: 'hours', label: 'Heures' },
   { key: 'minutes', label: 'Minutes' },
-  { key: 'seconds', label: 'Seconds' },
+  { key: 'seconds', label: 'Secondes' },
 ] as const
 
 export function Countdown() {
@@ -172,15 +172,16 @@ export function Countdown() {
       />
       <div className="container-luxe relative grid gap-10 py-16 lg:grid-cols-12 lg:items-center lg:py-20">
         <Reveal className="lg:col-span-4">
-          <span className="eyebrow text-gold-light">The New Year Moment</span>
+          <span className="eyebrow text-gold-light">Le moment du Nouvel An</span>
           <h2 className="mt-5 font-display text-display-sm font-light uppercase">
-            Midnight is
+            Minuit
             <br />
-            <span className="italic text-gold-light">approaching</span>
+            <span className="italic text-gold-light">approche</span>
           </h2>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/60">
-            No pressure, no noise — just a moment to choose something beautiful before the year
-            turns. The collection is available until the last day of the season.
+            Ni pression, ni bruit — seulement un instant pour choisir quelque chose de beau avant
+            le passage à la nouvelle année. La collection est disponible jusqu’au dernier jour de
+            la saison.
           </p>
         </Reveal>
 
@@ -209,8 +210,8 @@ export function Countdown() {
           </div>
           <p className="mt-6 text-center text-[11px] uppercase tracking-wider2 text-ivory/45">
             {complete
-              ? `The ${brand.year} collection is now in full celebration`
-              : `Counting down to January 1st, ${brand.year}`}
+              ? `La collection ${brand.year} est en pleine célébration`
+              : `Compte à rebours jusqu’au 1er janvier ${brand.year}`}
           </p>
         </div>
       </div>

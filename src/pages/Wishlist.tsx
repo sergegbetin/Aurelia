@@ -7,7 +7,7 @@ import { Reveal, SectionHeading } from '../components/ui/Primitives'
 import { HeartIcon, BagIcon } from '../components/ui/Icons'
 
 export function WishlistPage() {
-  usePage('Your wishlist | AURELIA', 'Products you saved from the AURELIA New Year Collection.')
+  usePage('Votre liste d’envies | AURELIA', 'Les produits que vous avez conservés dans la Collection du Nouvel An AURELIA.')
   const { wishlist, addItem, setCartOpen } = useStore()
   const saved = allProducts.filter((product) => wishlist.includes(product.id))
   const suggestions = allProducts.filter((product) => !wishlist.includes(product.id)).slice(0, 4)
@@ -16,14 +16,14 @@ export function WishlistPage() {
     <div className="container-luxe py-10 lg:py-16">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-noir/10 pb-6">
         <div>
-          <span className="eyebrow">Saved for later</span>
+          <span className="eyebrow">Mis de côté</span>
           <h1 className="mt-3 font-display text-4xl font-light uppercase lg:text-5xl">
-            Your wishlist
+            Votre liste d’envies
           </h1>
         </div>
         <p className="text-[12px] uppercase tracking-wider text-noir/50">
           <span className="num text-noir">{saved.length}</span>{' '}
-          {saved.length === 1 ? 'item' : 'items'}
+          {saved.length === 1 ? 'article' : 'articles'}
         </p>
       </div>
 
@@ -33,14 +33,14 @@ export function WishlistPage() {
             <HeartIcon size={26} />
           </span>
           <div>
-            <h2 className="font-display text-3xl font-light">Nothing saved yet</h2>
+            <h2 className="font-display text-3xl font-light">Rien d’enregistré pour l’instant</h2>
             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-noir/60">
-              Tap the heart on any product to keep it here — your wishlist stays saved on this
-              device.
+              Cliquez sur le cœur d’un produit pour le conserver ici — votre liste d’envies reste
+              enregistrée sur cet appareil.
             </p>
           </div>
           <Link to="/shop" className="btn-primary">
-            Discover the collection
+            Découvrir la collection
           </Link>
         </div>
       ) : (
@@ -57,7 +57,7 @@ export function WishlistPage() {
                   }}
                   className="mt-4 flex w-full items-center justify-center gap-2 border border-noir/15 py-3 text-[11px] uppercase tracking-wider2 transition-colors hover:border-noir hover:bg-noir hover:text-ivory"
                 >
-                  <BagIcon size={14} /> Move to cart
+                  <BagIcon size={14} /> Ajouter au panier
                 </button>
               </Reveal>
             ))}
@@ -66,9 +66,9 @@ export function WishlistPage() {
           <section className="mt-16 border-t border-noir/10 pt-8">
             <SectionHeading
               align="left"
-              eyebrow="Also worth a look"
-              title="More from the collection"
-              subtitle="If your wishlist is already full, these are the pieces people add next."
+              eyebrow="À voir aussi"
+              title="Davantage de pièces de la collection"
+              subtitle="Si votre liste d’envies est déjà complète, voici les pièces que l’on ajoute ensuite."
             />
             <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
               {suggestions.map((product) => (

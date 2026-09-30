@@ -3,55 +3,55 @@ import type { Category } from './types'
 export const categories: Category[] = [
   {
     slug: 'beauty',
-    name: 'Beauty',
-    headline: 'A little luxury for your everyday.',
+    name: 'Beauté',
+    headline: 'Un petit luxe pour le quotidien.',
     description:
-      'Fragrance, skincare and beauty rituals selected to make ordinary mornings feel like a new beginning.',
+      'Parfums, soins et rituels beauté choisis pour donner à vos matins ordinaires des couleurs de nouveau commencement.',
     image: '/images/category-beauty.jpg',
     accent: '#8A2C3D',
   },
   {
     slug: 'fashion',
-    name: 'Fashion',
-    headline: 'Elevated pieces for a fresh start.',
+    name: 'Mode',
+    headline: 'Des pièces affirmées pour un nouveau départ.',
     description:
-      'Timeless silhouettes, soft tailoring and considered fabrics — a wardrobe that carries you into the new year.',
+      'Silhouettes intemporelles, vestiaire souple et matières choisies — une garde-robe qui vous accompagne dans la nouvelle année.',
     image: '/images/category-fashion.jpg',
     accent: '#3A382F',
   },
   {
     slug: 'tech',
-    name: 'Tech',
-    headline: 'Smarter tools for the year ahead.',
+    name: 'High-tech',
+    headline: 'Des outils plus malins pour l’année à venir.',
     description:
-      'Audio, wearables and everyday devices chosen for how beautifully they fit into a better routine.',
+      'Audio, objets connectés et appareils du quotidien choisis pour la finesse avec laquelle ils s’inscrivent dans de meilleures habitudes.',
     image: '/images/category-tech.jpg',
     accent: '#9A7431',
   },
   {
     slug: 'home',
-    name: 'Home',
-    headline: 'Warmth, calm and beautiful spaces.',
+    name: 'Maison',
+    headline: 'Chaleur, calme et beaux espaces.',
     description:
-      'Candles, textiles and objects that turn a room into the place you want to start every year from.',
+      'Bougies, textiles et objets qui transforment une pièce en l’endroit où vous voulez commencer chaque année.',
     image: '/images/category-home.jpg',
     accent: '#6C1D2C',
   },
   {
     slug: 'accessories',
-    name: 'Accessories',
-    headline: 'The details that finish the look.',
+    name: 'Accessoires',
+    headline: 'Les détails qui achèvent la silhouette.',
     description:
-      'Watches, bags and jewellery with quiet confidence — small pieces, big difference.',
+      'Montres, sacs et bijoux d’une élégance tranquille — de petites pièces, une grande différence.',
     image: '/images/category-accessories.jpg',
     accent: '#C0964B',
   },
   {
     slug: 'gifts',
-    name: 'Gifts',
-    headline: 'Thoughtful presents, perfectly chosen.',
+    name: 'Cadeaux',
+    headline: 'Des cadeaux attentionnés, parfaitement choisis.',
     description:
-      'Curated gift sets and ready-to-give boxes for the people who make your year worth celebrating.',
+      'Coffrets et boîtes prêts à offrir, pour les personnes qui rendent votre année digne d’être célébrée.',
     image: '/images/category-gifts.jpg',
     accent: '#1B1A14',
   },

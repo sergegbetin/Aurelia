@@ -39,9 +39,9 @@ export function NewYearEdit() {
   return (
     <section className="container-luxe py-16 lg:py-24">
       <SectionHeading
-        eyebrow="Shop the edit"
-        title="The New Year Edit"
-        subtitle="Everything you need to start the year beautifully."
+        eyebrow="Découvrir la sélection"
+        title="L’édition du Nouvel An"
+        subtitle="Tout ce qu’il faut pour commencer l’année avec beauté."
       />
 
       <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
@@ -53,7 +53,7 @@ export function NewYearEdit() {
             >
               <ImageWithFallback
                 src={`/images/category-${category.slug}.jpg`}
-                alt={`${category.label} collection`}
+                alt={`Collection ${category.label}`}
                 monogram={category.label.charAt(0)}
                 className="aspect-[3/4] w-full sm:aspect-[4/5]"
                 imgClassName="img-zoom"
@@ -66,7 +66,7 @@ export function NewYearEdit() {
                 </span>
                 <span className="text-[11px] leading-snug text-ivory/70">{category.line}</span>
                 <span className="mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-luxe text-gold-light opacity-0 transition-all duration-400 group-hover:opacity-100">
-                  Explore <ArrowRightIcon size={13} />
+                  Explorer <ArrowRightIcon size={13} />
                 </span>
               </span>
             </Link>
@@ -82,9 +82,9 @@ export function GiftGuide() {
     <section className="bg-ivory-soft py-16 lg:py-24">
       <div className="container-luxe">
         <SectionHeading
-          eyebrow="Gift guide"
-          title="Find the perfect gift"
-          subtitle="Thoughtful gifts for every kind of person."
+          eyebrow="Guide cadeaux"
+          title="Trouver le cadeau idéal"
+          subtitle="Des cadeaux attentionnés pour toutes les personnalités."
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -94,12 +94,12 @@ export function GiftGuide() {
                 <Link
                   to={`/shop?gift=${encodeURIComponent(guide.query)}`}
                   className="relative block overflow-hidden"
-                  aria-label={`${guide.title} gifts`}
+                  aria-label={`Cadeaux ${guide.title}`}
                 >
                   <ImageWithFallback
                     src={guide.image}
-                    alt={`${guide.title} gift selection`}
-                    monogram={guide.title.replace('For ', '').charAt(0)}
+                    alt={`Sélection de cadeaux ${guide.title}`}
+                    monogram={guide.title.replace('Pour ', '').charAt(0)}
                     className="aspect-[16/11] w-full bg-cream"
                     imgClassName="img-zoom"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -113,7 +113,7 @@ export function GiftGuide() {
                   <p className="text-sm leading-relaxed text-noir/60">{guide.description}</p>
                   <div className="mt-auto pt-3">
                     <ArrowLink to={`/shop?gift=${encodeURIComponent(guide.query)}`}>
-                      Discover gifts
+                      Découvrir les cadeaux
                     </ArrowLink>
                   </div>
                 </div>

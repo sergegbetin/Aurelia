@@ -238,7 +238,7 @@ export function ProductPage() {
             <div className="flex items-center justify-between gap-4">
               <span className="eyebrow">{product.category}</span>
               <span className="text-[11px] uppercase tracking-wider text-noir/45">
-                Ref. {product.id}
+                Réf. {product.id}
               </span>
             </div>
 
@@ -255,7 +255,7 @@ export function ProductPage() {
                 onClick={() => setOpenTab('reviews')}
                 className="text-[11px] uppercase tracking-wider text-noir/55 underline-offset-4 hover:text-gold-deep hover:underline"
               >
-                Read reviews
+                Lire les avis
               </button>
             </div>
 
@@ -263,7 +263,7 @@ export function ProductPage() {
               <Price price={product.price} original={product.originalPrice} size="lg" />
               {discount > 0 && (
                 <span className="text-[12px] text-noir/55">
-                  Save {formatPriceFull((product.originalPrice ?? product.price) - product.price)}
+                  Économie de {formatPriceFull((product.originalPrice ?? product.price) - product.price)}
                 </span>
               )}
               <span
@@ -274,9 +274,9 @@ export function ProductPage() {
               >
                 {product.stock > 0
                   ? product.stock < 20
-                    ? `Only ${product.stock} left`
-                    : 'In stock'
-                  : 'Out of stock'}
+                    ? `Plus que ${product.stock} en stock`
+                    : 'En stock'
+                  : 'Épuisé'}
               </span>
             </div>
 
@@ -328,7 +328,7 @@ export function ProductPage() {
                     ? 'border-bordeaux bg-bordeaux text-ivory'
                     : 'border-noir/15 text-noir/70 hover:border-noir',
                 )}
-                aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                aria-label={wishlisted ? 'Retirer de la liste d’envies' : 'Ajouter à la liste d’envies'}
               >
                 <HeartIcon size={18} filled={wishlisted} />
               </button>
@@ -344,7 +344,7 @@ export function ProductPage() {
                 }}
                 disabled={product.stock === 0}
               >
-                <BagIcon size={16} /> Add to cart
+                <BagIcon size={16} /> Ajouter au panier
               </button>
               <button
                 type="button"
@@ -352,38 +352,38 @@ export function ProductPage() {
                 disabled={product.stock === 0}
                 onClick={() => {
                   addToCart()
-                  pushToast({ title: 'Ready for checkout', variant: 'success' })
+                  pushToast({ title: 'Prêt pour le paiement', variant: 'success' })
                   navigate('/checkout')
                 }}
               >
-                Buy now
+                Acheter maintenant
               </button>
             </div>
 
             <ul className="grid gap-3 border-t border-noir/10 pt-6 text-[13px] text-noir/65 sm:grid-cols-3">
               <li className="flex items-start gap-2.5">
                 <TruckIcon size={17} className="mt-0.5 shrink-0 text-gold-deep" />
-                <span>Estimated delivery: 2–5 business days</span>
+                <span>Livraison estimée : 2–5 jours ouvrés</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <RefreshIcon size={17} className="mt-0.5 shrink-0 text-gold-deep" />
-                <span>Easy returns according to our return policy</span>
+                <span>Retours faciles selon notre politique de retours</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <LockIcon size={16} className="mt-0.5 shrink-0 text-gold-deep" />
-                <span>Secure payment</span>
+                <span>Paiement sécurisé</span>
               </li>
             </ul>
 
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="chip">
-                <CheckIcon size={13} /> Free gift wrapping
+                <CheckIcon size={13} /> Emballage cadeau offert
               </span>
               <span className="chip">
-                <ShieldIcon size={14} /> 30-day returns
+                <ShieldIcon size={14} /> Retours sous 30 jours
               </span>
               <button type="button" className="chip" onClick={() => setQuickView(product)}>
-                Quick view
+                Aperçu rapide
               </button>
             </div>
           </div>
@@ -391,11 +391,11 @@ export function ProductPage() {
 
         {/* Tabs */}
         <section className="mt-16 border-t border-noir/10 pt-10 lg:mt-24">
-          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Product information">
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Informations sur le produit">
             {[
               { key: 'description', label: 'Description' },
-              { key: 'specs', label: 'Characteristics' },
-              { key: 'reviews', label: `Reviews (${product.reviews})` },
+              { key: 'specs', label: 'Caractéristiques' },
+              { key: 'reviews', label: `Avis (${product.reviews})` },
               { key: 'faq', label: 'FAQ' },
             ].map((tab) => (
               <button
@@ -463,7 +463,7 @@ export function ProductPage() {
                   <p className="num font-display text-5xl font-light">{product.rating.toFixed(1)}</p>
                   <Rating value={product.rating} size={16} />
                   <p className="text-[12px] text-noir/55">
-                    Based on {product.reviews} demo reviews
+                    Basé sur {product.reviews} avis de démonstration
                   </p>
                   <div className="mt-2 flex flex-col gap-1.5">
                     {[5, 4, 3, 2, 1].map((star, index) => {
@@ -485,7 +485,7 @@ export function ProductPage() {
                     })}
                   </div>
                   <p className="mt-3 border-t border-noir/10 pt-3 text-[11px] text-noir/45">
-                    Demonstration data.
+                    Données de démonstration.
                   </p>
                 </div>
 
@@ -504,7 +504,7 @@ export function ProductPage() {
                       <div className="mt-3 flex flex-wrap items-center gap-3">
                         <span className="text-[12px] font-medium">{review.author}</span>
                         <span className="inline-flex items-center gap-1.5 bg-gold-pale px-2 py-1 text-[10px] uppercase tracking-wider text-gold-deep">
-                          <CheckIcon size={11} /> Verified purchase
+                          <CheckIcon size={11} /> Achat vérifié
                         </span>
                       </div>
                     </li>
@@ -556,9 +556,9 @@ export function ProductPage() {
         <section className="mt-16 lg:mt-24">
           <SectionHeading
             align="left"
-            eyebrow="Complete the edit"
-            title="You may also like"
-            subtitle="Pieces that pair naturally with this one."
+            eyebrow="Complétez votre sélection"
+            title="Produits similaires"
+            subtitle="Des pièces qui s’accordent naturellement avec celle-ci."
           />
           <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
             {related.map((item, index) => (
@@ -572,9 +572,9 @@ export function ProductPage() {
               to="/shop"
               className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-wider2 text-noir/60 hover:text-gold-deep"
             >
-              <ArrowLeftIcon size={15} /> Back to shop
+              <ArrowLeftIcon size={15} /> Retour à la boutique
             </Link>
-            <ArrowLink to="/shop?view=collection">New Year Collection</ArrowLink>
+            <ArrowLink to="/shop?view=collection">Collection du Nouvel An</ArrowLink>
           </div>
         </section>
       </div>
@@ -605,7 +605,7 @@ export function ProductPage() {
               setCartOpen(true)
             }}
           >
-            <BagIcon size={15} /> Add to cart
+            <BagIcon size={15} /> Ajouter au panier
           </button>
         </div>
       </div>
@@ -617,4 +617,10 @@ export function ProductPage() {
 
 export function RatingSummary({ rating }: { rating: number }) {
   return (
-    <div cla
+    <div className="flex gap-1 text-gold">
+      {[1, 2, 3, 4, 5].map((value) => (
+        <StarIcon key={value} size={14} filled={value <= Math.round(rating)} />
+      ))}
+    </div>
+  )
+}
