@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { bestSellers, newYearSpecials, featuredProduct, freshStartPicks } from '../../data/content'
 import { useStore } from '../../store/StoreContext'
+import { categoryLabel } from '../../utils'
 import { ProductCard } from '../ui/ProductCard'
 import {
   ArrowLink,
@@ -254,7 +255,7 @@ export function FeaturedProduct() {
           </Reveal>
 
           <Reveal delay={120} className="flex flex-col justify-center">
-            <span className="eyebrow">{product.category}</span>
+            <span className="eyebrow">{categoryLabel(product.category)}</span>
             <h3 className="mt-4 font-display text-display-sm font-light">{product.name}</h3>
             <p className="mt-3 text-sm uppercase tracking-wider text-noir/50">{product.tagline}</p>
 

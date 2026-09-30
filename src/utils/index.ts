@@ -44,6 +44,10 @@ const badgeKeywords: Record<string, string> = {
   exclusive: 'exclusivite',
 }
 
+/** Nom français d’une catégorie à partir de son slug. */
+export const categoryLabel = (slug: string): string =>
+  categories.find((category) => category.slug === slug)?.name ?? slug
+
 /**
  * Texte interrogeable d’un produit : nom, catégorie en français, libellé du
  * badge, accroche, description, tags et synonymes utiles aux suggestions.
