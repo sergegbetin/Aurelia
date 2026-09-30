@@ -30,7 +30,7 @@ interface StoredOrder {
 }
 
 export function OrderConfirmationPage() {
-  usePage('Order confirmed | AURELIA', 'Your AURELIA order has been confirmed.')
+  usePage('Commande confirmée | AURELIA', 'Votre commande AURELIA a été confirmée.')
   const [order, setOrder] = useState<StoredOrder | null>(null)
   const [ready, setReady] = useState(false)
 
@@ -52,13 +52,13 @@ export function OrderConfirmationPage() {
     const offset = order.shippingMethod === 'express' ? [1, 2] : [2, 5]
     min.setDate(min.getDate() + offset[0])
     max.setDate(max.getDate() + offset[1])
-    const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' })
+    const fmt = new Intl.DateTimeFormat('fr-FR', { month: 'short', day: 'numeric' })
     return {
       label: `${fmt.format(min)} – ${fmt.format(max)}`,
       detail:
         order.shippingMethod === 'express'
-          ? 'Express delivery, tracked and insured'
-          : 'Standard delivery, tracked',
+          ? 'Livraison express, suivie et assurée'
+          : 'Livraison standard, suivie',
     }
   }, [order])
 
@@ -71,26 +71,28 @@ export function OrderConfirmationPage() {
         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold text-noir">
           <CheckIcon size={26} />
         </span>
-        <p className="eyebrow mt-6">Thank you</p>
+        <p className="eyebrow mt-6">Merci</p>
         <h1 className="mt-4 font-display text-display-sm font-light uppercase">
-          Order confirmed
+          Commande confirmée
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-noir/65 sm:text-base">
-          Thank you for starting the year with AURELIA. A confirmation has been sent to{' '}
+          Merci de commencer l’année avec AURELIA. Une confirmation a été envoyée à{' '}
           <span className="text-noir">{order.information.email}</span>.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3 text-[11px] uppercase tracking-wider2 text-noir/55">
           <span className="chip">
-            Order <span className="num ml-1 text-noir">{order.number}</span>
+            Commande <span className="num ml-1 text-noir">{order.number}</span>
           </span>
-          <span className="chip">{new Date(order.date).toLocaleDateString('en-US')}</span>
-          <span className="chip">{order.items.length} products</span>
+          <span className="chip">{new Date(order.date).toLocaleDateString('fr-FR')}</span>
+          <span className="chip">
+            {order.items.length} {order.items.length === 1 ? 'produit' : 'produits'}
+          </span>
         </div>
       </Reveal>
 
       <div className="mx-auto mt-12 grid max-w-5xl gap-8 lg:grid-cols-2">
         <Reveal className="border border-noir/12 bg-white/70 p-6">
-          <h2 className="text-[12px] uppercase tracking-luxe">Your products</h2>
+          <h2 className="text-[12px] uppercase tracking-luxe">Vos produits</h2>
           <ul className="mt-5 flex flex-col divide-y divide-noir/10">
             {order.items.map((item) => (
               <li key={item.key} className="flex items-center gap-4 py-4">
@@ -108,7 +110,7 @@ export function OrderConfirmationPage() {
                     {item.name}
                   </Link>
                   <p className="mt-1 text-[11px] uppercase tracking-wider text-noir/45">
-                    {Object.values(item.options).join(' · ')} · Qty {item.quantity}
+                    {Object.values(item.options).join(' · ')} · Qté {item.quantity}
                   </p>
                 </div>
                 <span className="num text-sm">
@@ -120,23 +122,23 @@ export function OrderConfirmationPage() {
 
           <dl className="mt-4 space-y-2 border-t border-noir/10 pt-4 text-sm">
             <div className="flex justify-between">
-              <dt className="text-noir/60">Subtotal</dt>
+              <dt className="text-noir/60">Sous-total</dt>
               <dd className="num">{formatPriceFull(order.totals.subtotal)}</dd>
             </div>
             {order.totals.discount > 0 && (
               <div className="flex justify-between text-gold-deep">
-                <dt>Discount</dt>
+                <dt>Réduction</dt>
                 <dd className="num">−{formatPriceFull(order.totals.discount)}</dd>
               </div>
             )}
             <div className="flex justify-between">
-              <dt className="text-noir/60">Delivery</dt>
+              <dt className="text-noir/60">Livraison</dt>
               <dd className="num">
-                {order.totals.shipping === 0 ? 'Free' : formatPriceFull(order.totals.shipping)}
+                {order.totals.shipping === 0 ? 'Offert' : formatPriceFull(order.totals.shipping)}
               </dd>
             </div>
             <div className="flex justify-between border-t border-noir/10 pt-3 text-base">
-              <dt className="font-medium">Total paid</dt>
+              <dt className="font-medium">Total payé</dt>
               <dd className="num font-medium">{formatPriceFull(order.totals.total)}</dd>
             </div>
           </dl>
@@ -145,7 +147,7 @@ export function OrderConfirmationPage() {
         <Reveal delay={120} className="flex flex-col gap-6">
           <div className="border border-noir/12 bg-white/70 p-6">
             <h2 className="flex items-center gap-2 text-[12px] uppercase tracking-luxe">
-              <TruckIcon size={16} className="text-gold-deep" /> Delivery
+              <TruckIcon size={16} className="text-gold-deep" /> Livraison
             </h2>
             <p className="mt-4 font-display text-2xl font-light">{delivery.label}</p>
             <p className="mt-1.5 text-[13px] text-noir/55">{delivery.detail}</p>
@@ -158,26 +160,26 @@ export function OrderConfirmationPage() {
 
           <div className="border border-noir/12 bg-white/70 p-6">
             <h2 className="flex items-center gap-2 text-[12px] uppercase tracking-luxe">
-              <LockIcon size={14} className="text-gold-deep" /> Payment
+              <LockIcon size={14} className="text-gold-deep" /> Paiement
             </h2>
             <p className="mt-3 text-sm text-noir/70">
               {order.paymentMethod === 'card'
-                ? 'Card payment approved — handled securely by our payment provider.'
+                ? 'Paiement par carte approuvé — géré en toute sécurité par notre prestataire.'
                 : order.paymentMethod === 'paypal'
-                  ? 'Approved with PayPal.'
-                  : 'Approved with your digital wallet.'}
+                  ? 'Approuvé avec PayPal.'
+                  : 'Approuvé avec votre portefeuille numérique.'}
             </p>
             <p className="mt-2 text-[11px] text-noir/45">
-              Demonstration order — no real payment has been captured.
+              Commande de démonstration — aucun paiement réel n’a été encaissé.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
             <Link to="/shop" className="btn-primary">
-              Continue shopping <ArrowRightIcon size={15} />
+              Continuer mes achats <ArrowRightIcon size={15} />
             </Link>
             <Link to="/" className="btn-outline">
-              Back to home
+              Retour à l’accueil
             </Link>
           </div>
         </Reveal>

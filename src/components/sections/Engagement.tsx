@@ -10,7 +10,7 @@ export function EditorialBanner() {
       <div className="relative min-h-[26rem] lg:min-h-[34rem]">
         <ImageWithFallback
           src="/images/editorial-banner.jpg"
-          alt="Elegant New Year celebration table with champagne, candles and golden light"
+          alt="Table de fête élégante pour le Nouvel An avec champagne, bougies et lumière dorée"
           monogram="A"
           className="absolute inset-0 h-full w-full"
           sizes="100vw"
@@ -20,16 +20,16 @@ export function EditorialBanner() {
           <Reveal className="max-w-2xl">
             <span className="eyebrow text-gold-light">AURELIA {brand.year}</span>
             <h2 className="mt-5 font-display text-display-md font-light uppercase leading-[1.02]">
-              Make this year
+              Faites de cette année
               <br />
-              <span className="italic text-gold-light">yours.</span>
+              <span className="italic text-gold-light">la vôtre.</span>
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-ivory/75 sm:text-base">
-              Discover products that fit the life you want to create — less noise, more intention,
-              and a little beauty in every day.
+              Découvrez des produits qui correspondent à la vie que vous voulez créer — moins de
+              bruit, plus d’intention, et un peu de beauté au quotidien.
             </p>
             <Link to="/shop" className="btn-light mt-4 w-fit">
-              Explore AURELIA <ArrowRightIcon size={16} />
+              Explorer AURELIA <ArrowRightIcon size={16} />
             </Link>
           </Reveal>
         </div>
@@ -42,9 +42,9 @@ export function SocialProof() {
   return (
     <section className="container-luxe py-16 lg:py-24">
       <SectionHeading
-        eyebrow="Community"
-        title="Loved by our community"
-        subtitle="A few words from customers of the New Year Collection."
+        eyebrow="Communauté"
+        title="Adorée par notre communauté"
+        subtitle="Quelques mots de clientes et clients de la Collection du Nouvel An."
       />
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -68,7 +68,7 @@ export function SocialProof() {
               </figcaption>
               <div className="flex flex-wrap items-center gap-2 border-t border-noir/10 pt-3">
                 <span className="inline-flex items-center gap-1.5 bg-gold-pale px-2 py-1 text-[10px] uppercase tracking-wider text-gold-deep">
-                  <CheckIcon size={11} /> Verified purchase
+                  <CheckIcon size={11} /> Achat vérifié
                 </span>
                 <span className="truncate text-[11px] text-noir/50">{testimonial.product}</span>
               </div>
@@ -78,7 +78,8 @@ export function SocialProof() {
       </div>
 
       <p className="mt-6 text-center text-[11px] text-noir/40">
-        Demonstration testimonials — sample content used for design purposes only.
+        Contenu de démonstration — témoignages d’exemple utilisés à des fins de conception
+        uniquement.
       </p>
     </section>
   )
@@ -89,9 +90,9 @@ export function InstagramSection() {
     <section className="bg-ivory-soft py-16 lg:py-24">
       <div className="container-luxe">
         <SectionHeading
-          eyebrow="Social"
-          title="Follow the AURELIA moment"
-          subtitle="Gift wrapping, decorated rooms, evening outfits and small rituals — a glimpse of how the collection is lived."
+          eyebrow="Réseaux sociaux"
+          title="Suivez le moment AURELIA"
+          subtitle="Emballages cadeaux, pièces décorées, tenues de soirée et petits rituels — un aperçu de la façon dont vit la collection."
         />
 
         <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
@@ -118,12 +119,12 @@ export function InstagramSection() {
 
         <Reveal className="mt-10 flex justify-center">
           <Link to="/" className="btn-outline">
-            Follow us <InstagramIcon size={16} />
+            Nous suivre <InstagramIcon size={16} />
           </Link>
         </Reveal>
 
         <p className="mt-4 text-center text-[11px] text-noir/40">
-          Sample lifestyle imagery — no live social account is connected to this prototype.
+          Visuels de démonstration — aucun compte n’est publié pour le moment.
         </p>
       </div>
     </section>
@@ -146,12 +147,13 @@ export function Newsletter() {
         <Reveal className="lg:col-span-6">
           <span className="eyebrow text-gold-light">Newsletter</span>
           <h2 className="mt-5 font-display text-display-sm font-light uppercase">
-            Make this year
+            Faites de cette année
             <br />
-            <span className="italic text-gold-light">count.</span>
+            <span className="italic text-gold-light">compter.</span>
           </h2>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-ivory/65">
-            Be the first to discover new collections, special offers and inspiring products.
+            Soyez les premiers à découvrir les nouvelles collections, les offres spéciales et les
+            produits qui inspirent.
           </p>
         </Reveal>
 
@@ -162,9 +164,10 @@ export function Newsletter() {
                 <CheckIcon size={16} />
               </span>
               <div>
-                <p className="font-display text-xl">You are on the list.</p>
+                <p className="font-display text-xl">Votre inscription est confirmée.</p>
                 <p className="mt-1.5 text-sm text-ivory/65">
-                  Thank you — we will only write when there is something worth opening.
+                  Merci — nous n’écrirons que lorsqu’il y aura quelque chose qui vaille la peine
+                  d’être ouvert.
                 </p>
               </div>
             </div>
@@ -172,7 +175,7 @@ export function Newsletter() {
             <form onSubmit={submit} noValidate className="flex flex-col gap-3">
               <div className="flex flex-col gap-3 sm:flex-row">
                 <label htmlFor="newsletter-email" className="sr-only">
-                  Your email address
+                  Votre adresse e-mail
                 </label>
                 <input
                   id="newsletter-email"
@@ -182,22 +185,23 @@ export function Newsletter() {
                     setEmail(event.target.value)
                     if (state === 'error') setState('idle')
                   }}
-                  placeholder="Your email address"
+                  placeholder="Votre adresse e-mail"
                   aria-invalid={state === 'error'}
                   aria-describedby={state === 'error' ? 'newsletter-error' : undefined}
                   className="field flex-1 border-ivory/20 bg-ivory/5 text-ivory placeholder:text-ivory/40 focus:border-gold"
                 />
                 <button type="submit" className="btn-gold shrink-0">
-                  Join AURELIA
+                  S’abonner
                 </button>
               </div>
               {state === 'error' && (
                 <p id="newsletter-error" className="text-[12px] text-gold-light" role="alert">
-                  Please enter a valid email address.
+                  Veuillez saisir une adresse e-mail valide.
                 </p>
               )}
               <p className="text-[11px] leading-relaxed text-ivory/45">
-                Demo form — no data is transmitted. You can unsubscribe at any time.
+                Formulaire de démonstration — aucune donnée n’est transmise. Vous pouvez vous
+                désinscrire à tout moment.
               </p>
             </form>
           )}
@@ -211,11 +215,11 @@ export function EditorialIntro() {
   return (
     <div className="container-luxe">
       <Reveal className="flex flex-col items-center gap-4 border-b border-noir/10 pb-14 text-center">
-        <span className="eyebrow">Curated for {brand.year}</span>
+        <span className="eyebrow">Sélection pour {brand.year}</span>
         <p className="max-w-3xl font-display text-2xl font-light leading-snug text-noir/85 sm:text-3xl">
-          A new year asks for a fresh start — and a few beautiful objects to begin with.
+          Une nouvelle année appelle un nouveau départ — et quelques objets beaux pour commencer.
         </p>
-        <ArrowLink to="/shop">Discover the collection</ArrowLink>
+        <ArrowLink to="/shop">Découvrir la collection</ArrowLink>
       </Reveal>
     </div>
   )

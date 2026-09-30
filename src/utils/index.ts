@@ -1,9 +1,12 @@
+import { categories } from '../data/categories'
+import type { Product } from '../data/types'
+
 export const cn = (...classes: Array<string | false | null | undefined>) =>
   classes.filter(Boolean).join(' ')
 
-const currency = new Intl.NumberFormat('en-US', {
+const currency = new Intl.NumberFormat('fr-FR', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'EUR',
   minimumFractionDigits: 0,
   maximumFractionDigits: 2,
 })
@@ -11,9 +14,9 @@ const currency = new Intl.NumberFormat('en-US', {
 export const formatPrice = (value: number) => currency.format(value)
 
 export const formatPriceFull = (value: number) =>
-  new Intl.NumberFormat('en-US', {
+  new Intl.NumberFormat('fr-FR', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'EUR',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value)
@@ -31,6 +34,37 @@ export const slugify = (value: string) =>
 
 export const clamp = (min: number, value: number, max: number) =>
   Math.min(Math.max(value, min), max)
+
+/** Mots-clés ajoutés à la recherche selon le badge du produit. */
+const badgeKeywords: Record<string, string> = {
+  new: 'nouveaute nouveautes',
+  bestseller: 'meilleures ventes coupes de coeur',
+  limited: 'edition limitee',
+  sale: 'promo promotions soldes',
+  exclusive: 'exclusivite',
+}
+
+/**
+ * Texte interrogeable d’un produit : nom, catégorie en français, libellé du
+ * badge, accroche, description, tags et synonymes utiles aux suggestions.
+ */
+export const productSearchText = (product: Product): string =>
+  [
+    product.name,
+    product.category,
+    categories.find((category) => category.slug === product.category)?.name ?? '',
+    product.tagline,
+    product.description,
+    ...product.tags,
+    product.badge ? badgeKeywords[product.badge] ?? '' : '',
+    product.tags.includes('cadeau')
+      ? 'cadeaux du nouvel an cadeau cadeau pour elle cadeau pour lui'
+      : '',
+    product.tags.includes('montre') ? 'montres montre' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
 
 export const range = (length: number) => Array.from({ length }, (_, i) => i)
 

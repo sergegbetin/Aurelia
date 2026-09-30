@@ -28,7 +28,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/60">
-              Une sélection soignée de cadeaux, d’objets de style de vie et de gestes du quotidien
+              Une sélection soignée de cadeaux, d’objets de style de vie et d’objets du quotidien
               pour le Nouvel An — choisis pour leur qualité, leur design et le plaisir de
               recommencer.
             </p>
@@ -90,7 +90,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 text-[11px] leading-relaxed text-ivory/35">
-          Avis de prototype : tous les produits, prix, avis et témoignages affichés sur ce site
+          Avis de prototype : tous les produits, prix, avis et témoignages affichés sur ce site
           sont des données de démonstration, destinées à la conception. Le paiement sécurisé est
           assuré par un prestataire — aucune donnée de carte n’est jamais stockée par la boutique.
         </p>

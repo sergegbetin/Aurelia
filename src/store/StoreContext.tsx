@@ -40,9 +40,9 @@ interface Promo {
 }
 
 export const PROMOS: Record<PromoCode, Promo> = {
-  AURELIA10: { code: 'AURELIA10', label: '10% off your order', kind: 'percent', value: 10 },
-  NEWYEAR15: { code: 'NEWYEAR15', label: '15% off your order', kind: 'percent', value: 15 },
-  FREESHIP: { code: 'FREESHIP', label: 'Free standard delivery', kind: 'shipping', value: 100 },
+  AURELIA10: { code: 'AURELIA10', label: '10\u00A0% de réduction sur la commande', kind: 'percent', value: 10 },
+  NEWYEAR15: { code: 'NEWYEAR15', label: '15\u00A0% de réduction sur la commande', kind: 'percent', value: 15 },
+  FREESHIP: { code: 'FREESHIP', label: 'Livraison standard offerte', kind: 'shipping', value: 100 },
 }
 
 const FREE_SHIPPING_THRESHOLD = 150
@@ -162,7 +162,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         ]
       })
       pushToast({
-        title: 'Added to cart',
+        title: 'Ajouté au panier',
         message: `${product.name} · ${formatPrice(product.price)}`,
         variant: 'success',
       })
@@ -173,7 +173,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const removeItem = useCallback(
     (key: string) => {
       setLines((current) => current.filter((line) => line.key !== key))
-      pushToast({ title: 'Removed from cart' })
+      pushToast({ title: 'Retiré du panier' })
     },
     [pushToast, setLines],
   )
@@ -197,7 +197,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setWishlist((current) => {
         const exists = current.includes(product.id)
         pushToast({
-          title: exists ? 'Removed from wishlist' : 'Saved to wishlist',
+          title: exists ? 'Retiré de la liste d’envies' : 'Ajouté à la liste d’envies',
           message: product.name,
         })
         return exists ? current.filter((id) => id !== product.id) : [...current, product.id]
@@ -210,9 +210,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const applyPromo = useCallback((raw: string) => {
     const code = raw.trim().toUpperCase() as PromoCode
-    if (!PROMOS[code]) return { ok: false, message: `Code ${raw.trim()} is not valid.` }
+    if (!PROMOS[code]) return { ok: false, message: `Code ${raw.trim()} invalide.` }
     setPromo(code)
-    return { ok: true, message: `${PROMOS[code].label} applied.` }
+    return { ok: true, message: `Code appliqué : ${PROMOS[code].label}` }
   }, [])
 
   const removePromo = useCallback(() => setPromo(null), [])

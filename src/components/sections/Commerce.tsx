@@ -133,15 +133,15 @@ export function FreshStart() {
         <div className="flex flex-col justify-center lg:col-span-7">
           <SectionHeading
             align="left"
-            eyebrow="New year, new you"
+            eyebrow="Nouvelle année, nouvelle vous"
             title={
               <>
-                New year.
+                Nouvelle année.
                 <br />
-                <span className="italic text-gold-deep">New habits.</span>
+                <span className="italic text-gold-deep">Nouvelles habitudes.</span>
               </>
             }
-            subtitle="Fitness, organisation, wellbeing and work — small, well-made tools that make new routines easier to keep."
+            subtitle="Forme, organisation, bien-être et travail — de petits outils bien faits qui rendent les nouvelles habitudes plus faciles à tenir."
           />
 
           <ul className="mt-10 grid gap-x-6 gap-y-1 sm:grid-cols-2">
@@ -151,7 +151,7 @@ export function FreshStart() {
                   <Link
                     to={`/product/${product.slug}`}
                     className="shrink-0"
-                    aria-label={`View ${product.name}`}
+                    aria-label={`Voir ${product.name}`}
                   >
                     <ImageWithFallback
                       src={product.image}
@@ -180,9 +180,9 @@ export function FreshStart() {
                           setCartOpen(true)
                         }}
                         className="text-[10px] uppercase tracking-wider2 text-noir/55 transition-colors hover:text-gold-deep"
-                        aria-label={`Add ${product.name} to cart`}
+                        aria-label={`Ajouter ${product.name} au panier`}
                       >
-                        + Add
+                        + Ajouter
                       </button>
                     </div>
                   </div>
@@ -193,10 +193,10 @@ export function FreshStart() {
 
           <Reveal className="mt-9 flex flex-wrap items-center gap-4">
             <Link to="/shop?view=fresh" className="btn-primary">
-              Start fresh <ArrowRightIcon size={15} />
+              Nouveau départ <ArrowRightIcon size={15} />
             </Link>
             <span className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-noir/50">
-              <CheckIcon size={14} /> Free returns within 30 days
+              <CheckIcon size={14} /> Retours gratuits sous 30 jours
             </span>
           </Reveal>
         </div>
@@ -218,9 +218,9 @@ export function FeaturedProduct() {
     <section className="bg-ivory-soft py-16 lg:py-24">
       <div className="container-luxe">
         <SectionHeading
-          eyebrow="Featured product"
-          title="The one everyone wants"
-          subtitle="Our signature piece for the season — chosen for how it feels on the wrist, in the hand and under the light."
+          eyebrow="Produit en vedette"
+          title="La pièce que tout le monde veut"
+          subtitle="Notre pièce signature de la saison — choisie pour le confort au poignet, dans la main et à la lumière."
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -241,7 +241,7 @@ export function FeaturedProduct() {
                   <ImageWithFallback
                     key={image}
                     src={image}
-                    alt={`${product.name} view ${index + 1}`}
+                    alt={`${product.name} — vue ${index + 1}`}
                     monogram={product.name.charAt(0)}
                     className={
                       'h-16 w-14 border bg-ivory ' +
@@ -267,7 +267,7 @@ export function FeaturedProduct() {
             <div className="mt-7 flex flex-wrap items-center gap-6 border-y border-noir/10 py-5">
               <Price price={product.price} original={product.originalPrice} size="lg" />
               <span className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-gold-deep">
-                <SparkleIcon size={15} /> New Year price
+                <SparkleIcon size={15} /> Prix du Nouvel An
               </span>
             </div>
 
@@ -315,18 +315,18 @@ export function FeaturedProduct() {
                   className="btn-primary flex-1"
                   onClick={() => addItem(product, quantity, selection)}
                 >
-                  <BagIcon size={16} /> Add to cart
+                  <BagIcon size={16} /> Ajouter au panier
                 </button>
                 <button
                   type="button"
                   className="btn-gold flex-1"
                   onClick={() => {
                     addItem(product, quantity, selection)
-                    pushToast({ title: 'Proceeding to secure checkout', variant: 'success' })
+                    pushToast({ title: 'Redirection vers le paiement sécurisé', variant: 'success' })
                     navigate('/checkout')
                   }}
                 >
-                  Buy now
+                  Acheter maintenant
                 </button>
               </div>
             </div>
@@ -336,21 +336,21 @@ export function FeaturedProduct() {
               className="mt-4 self-start text-[11px] uppercase tracking-wider2 text-noir/55 underline-offset-4 hover:text-gold-deep hover:underline"
               onClick={() => setCartOpen(true)}
             >
-              Open cart
+              Ouvrir le panier
             </button>
 
             <dl className="mt-7 grid gap-3 border-t border-noir/10 pt-6 text-[13px] text-noir/65 sm:grid-cols-3">
               <div>
-                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Delivery</dt>
-                <dd className="mt-1">Estimated delivery: 2–5 business days</dd>
+                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Livraison</dt>
+                <dd className="mt-1">Livraison estimée : 2 à 5 jours ouvrés</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Returns</dt>
-                <dd className="mt-1">Easy returns according to our return policy</dd>
+                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Retours</dt>
+                <dd className="mt-1">Retours simples selon notre politique de retours</dd>
               </div>
               <div>
-                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Payment</dt>
-                <dd className="mt-1">Secure payment</dd>
+                <dt className="text-[10px] uppercase tracking-luxe text-noir/45">Paiement</dt>
+                <dd className="mt-1">Paiement sécurisé</dd>
               </div>
             </dl>
           </Reveal>

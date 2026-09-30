@@ -35,7 +35,7 @@ export function QuickView() {
         </div>
 
         <div className="flex flex-col gap-4 p-6 sm:p-9">
-          <span className="eyebrow">Quick view</span>
+          <span className="eyebrow">Aperçu rapide</span>
           <h2 id="quickview-title" className="font-display text-3xl font-light leading-tight">
             {product.name}
           </h2>
@@ -44,7 +44,7 @@ export function QuickView() {
           <Price price={product.price} original={product.originalPrice} size="lg" />
           {discount > 0 && (
             <p className="text-[12px] text-bordeaux">
-              You save {discount}% — limited New Year pricing.
+              Vous économisez {discount} % — tarif Nouvel An limité.
             </p>
           )}
 
@@ -78,7 +78,7 @@ export function QuickView() {
           <div className="flex items-center gap-3">
             <QuantityStepper value={quantity} onChange={setQuantity} />
             <span className="text-[12px] text-noir/55">
-              {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+              {product.stock > 0 ? `${product.stock} en stock` : 'Épuisé'}
             </span>
           </div>
 
@@ -92,7 +92,7 @@ export function QuickView() {
                 setCartOpen(true)
               }}
             >
-              <BagIcon size={16} /> Add to cart
+              <BagIcon size={16} /> Ajouter au panier
             </button>
             <button
               type="button"
@@ -102,16 +102,16 @@ export function QuickView() {
                 navigate(`/product/${product.slug}`)
               }}
             >
-              View product <ArrowRightIcon size={15} />
+              Voir le produit <ArrowRightIcon size={15} />
             </button>
           </div>
 
           <div className="mt-auto grid gap-2 border-t border-noir/10 pt-4 text-[12px] text-noir/60">
             <span className="flex items-center gap-2">
-              <TruckIcon size={16} /> Estimated delivery: 2–5 business days
+              <TruckIcon size={16} /> Livraison estimée : 2 à 5 jours ouvrés
             </span>
             <span className="flex items-center gap-2">
-              <LockIcon size={14} /> Secure payment
+              <LockIcon size={14} /> Paiement sécurisé
             </span>
           </div>
 
@@ -120,7 +120,7 @@ export function QuickView() {
             onClick={close}
             className="text-[11px] uppercase tracking-wider2 text-noir/55 underline-offset-4 hover:text-gold-deep hover:underline"
           >
-            Full details, reviews and specifications
+            Détails complets, avis et caractéristiques
           </Link>
         </div>
       </div>

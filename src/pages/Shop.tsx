@@ -4,8 +4,8 @@ export function Shop() {
   return (
     <ProductExplorer
       eyebrow="Boutique"
-      title="Shop the collection"
-      subtitle="Every piece of the AURELIA New Year Collection — filter by category, price, rating and availability."
+      title="Découvrir la collection"
+      subtitle="Toutes les pièces de la Collection du Nouvel An AURELIA — filtrez par catégorie, prix, note et disponibilité."
       heroImage="/images/shop-hero.jpg"
     />
   )

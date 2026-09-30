@@ -4,7 +4,7 @@ import type { CategorySlug, Product } from '../../data/types'
 import { products as allProducts } from '../../data/products'
 import { categories } from '../../data/categories'
 import { usePage } from '../../hooks/usePage'
-import { cn } from '../../utils'
+import { cn, productSearchText } from '../../utils'
 import { Drawer } from '../ui/Overlay'
 import { ProductCard } from '../ui/ProductCard'
 import { ArrowLink, ImageWithFallback, Reveal, SectionHeading } from '../ui/Primitives'
@@ -105,17 +105,7 @@ export function ProductExplorer({
       if (inStockOnly && product.stock <= 0) return false
       if (onSaleOnly && !(product.originalPrice && product.originalPrice > product.price)) return false
       if (termLower) {
-        const haystack = [
-          product.name,
-          product.category,
-          categories.find((c) => c.slug === product.category)?.name ?? '',
-          product.tagline,
-          product.description,
-          ...product.tags,
-        ]
-          .join(' ')
-          .toLowerCase()
-        if (!haystack.includes(termLower)) return false
+        if (!productSearchText(product).includes(termLower)) return false
       }
       if (gift) {
         const audience = gift.toLowerCase()

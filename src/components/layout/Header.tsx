@@ -127,7 +127,7 @@ export function Header() {
             type="button"
             className={iconBtn}
             onClick={() => setCartOpen(true)}
-            aria-label={`Panier, ${totals.itemCount} articles`}
+            aria-label={`Panier, ${totals.itemCount} ${totals.itemCount === 1 ? 'article' : 'articles'}`}
           >
             <BagIcon />
             {totals.itemCount > 0 && (

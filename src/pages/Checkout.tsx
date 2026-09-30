@@ -56,15 +56,15 @@ const emptyPayment: PaymentForm = {
 }
 
 const steps: { id: Step; label: string }[] = [
-  { id: 1, label: 'Information' },
-  { id: 2, label: 'Delivery' },
-  { id: 3, label: 'Payment' },
+  { id: 1, label: 'Informations' },
+  { id: 2, label: 'Livraison' },
+  { id: 3, label: 'Paiement' },
 ]
 
-const countries = ['France', 'Belgium', 'Switzerland', 'Luxembourg', 'United Kingdom', 'Germany', 'Spain', 'Italy', 'Canada', 'United States']
+const countries = ['France', 'Belgique', 'Suisse', 'Luxembourg', 'Royaume-Uni', 'Allemagne', 'Espagne', 'Italie', 'Canada', 'États-Unis']
 
 export function CheckoutPage() {
-  usePage('Checkout | AURELIA', 'Complete your AURELIA order — secure checkout.')
+  usePage('Paiement | AURELIA', 'Finalisez votre commande AURELIA — paiement sécurisé.')
   const {
     lines,
     totals,
@@ -92,10 +92,10 @@ export function CheckoutPage() {
   if (lines.length === 0 && !submitting) {
     return (
       <div className="container-luxe py-20 text-center">
-        <h1 className="font-display text-3xl font-light uppercase">Your cart is empty</h1>
-        <p className="mt-3 text-sm text-noir/60">Add something beautiful before checking out.</p>
+        <h1 className="font-display text-3xl font-light uppercase">Votre panier est vide</h1>
+        <p className="mt-3 text-sm text-noir/60">Ajoutez une belle pièce avant de passer au paiement.</p>
         <Link to="/shop" className="btn-primary mt-6">
-          Shop the collection
+          Découvrir la collection
         </Link>
       </div>
     )
@@ -109,12 +109,12 @@ export function CheckoutPage() {
   const validateStep1 = () => {
     const next: Record<string, string> = {}
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(information.email.trim()))
-      next.email = 'Enter a valid email address.'
-    if (!information.firstName.trim()) next.firstName = 'Required.'
-    if (!information.lastName.trim()) next.lastName = 'Required.'
-    if (!information.address.trim()) next.address = 'Required.'
-    if (!information.city.trim()) next.city = 'Required.'
-    if (!information.postalCode.trim()) next.postalCode = 'Required.'
+      next.email = 'Saisissez une adresse e-mail valide.'
+    if (!information.firstName.trim()) next.firstName = 'Champ obligatoire.'
+    if (!information.lastName.trim()) next.lastName = 'Champ obligatoire.'
+    if (!information.address.trim()) next.address = 'Champ obligatoire.'
+    if (!information.city.trim()) next.city = 'Champ obligatoire.'
+    if (!information.postalCode.trim()) next.postalCode = 'Champ obligatoire.'
     setErrors(next)
     return Object.keys(next).length === 0
   }
@@ -122,10 +122,10 @@ export function CheckoutPage() {
   const validateStep3 = () => {
     if (payment.method !== 'card') return true
     const next: Record<string, string> = {}
-    if (!payment.cardName.trim()) next.cardName = 'Required.'
-    if (payment.cardNumber.replace(/\s/g, '').length < 15) next.cardNumber = 'Enter a valid card number.'
-    if (!/^\d{2}\s*\/\s*\d{2}$/.test(payment.expiry.trim())) next.expiry = 'MM / YY'
-    if (payment.cvc.trim().length < 3) next.cvc = 'CVC'
+    if (!payment.cardName.trim()) next.cardName = 'Champ obligatoire.'
+    if (payment.cardNumber.replace(/\s/g, '').length < 15) next.cardNumber = 'Saisissez un numéro de carte valide.'
+    if (!/^\d{2}\s*\/\s*\d{2}$/.test(payment.expiry.trim())) next.expiry = 'MM / AA'
+    if (payment.cvc.trim().length < 3) next.cvc = 'Saisissez le CVC.'
     setErrors(next)
     return Object.keys(next).length === 0
   }
@@ -167,15 +167,15 @@ export function CheckoutPage() {
     <div className="container-luxe py-10 lg:py-16">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-noir/10 pb-6">
         <div>
-          <span className="eyebrow">Secure checkout</span>
-          <h1 className="mt-3 font-display text-4xl font-light uppercase lg:text-5xl">Checkout</h1>
+          <span className="eyebrow">Paiement sécurisé</span>
+          <h1 className="mt-3 font-display text-4xl font-light uppercase lg:text-5xl">Paiement</h1>
         </div>
         <span className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-noir/55">
-          <LockIcon size={14} className="text-gold-deep" /> Encrypted payment
+          <LockIcon size={14} className="text-gold-deep" /> Paiement chiffré
         </span>
       </div>
 
-      <ol className="mt-8 flex flex-wrap items-center gap-3 sm:gap-5" aria-label="Checkout steps">
+      <ol className="mt-8 flex flex-wrap items-center gap-3 sm:gap-5" aria-label="Étapes du paiement">
         {steps.map((item, index) => {
           const active = step === item.id
           const done = step > item.id
@@ -219,32 +219,32 @@ export function CheckoutPage() {
           {step === 1 && (
             <section className="flex flex-col gap-5" aria-labelledby="step-1-title">
               <h2 id="step-1-title" className="font-display text-2xl font-light">
-                1 — Information
+                1 — Informations
               </h2>
 
               <div>
                 <label htmlFor="email" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                  Email
+                  E-mail
                 </label>
                 <input
                   id="email"
                   type="email"
                   autoComplete="email"
                   className={fieldClass('email')}
-                  placeholder="you@example.com"
+                  placeholder="vous@exemple.fr"
                   value={information.email}
                   onChange={(event) => setInfo('email', event.target.value)}
                 />
                 {errorFor('email')}
                 <p className="mt-1.5 text-[11px] text-noir/45">
-                  Order confirmation and tracking are sent here.
+                  La confirmation et le suivi de la commande sont envoyés ici.
                 </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="firstName" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                    First name
+                    Prénom
                   </label>
                   <input
                     id="firstName"
@@ -257,7 +257,7 @@ export function CheckoutPage() {
                 </div>
                 <div>
                   <label htmlFor="lastName" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                    Last name
+                    Nom
                   </label>
                   <input
                     id="lastName"
@@ -272,13 +272,13 @@ export function CheckoutPage() {
 
               <div>
                 <label htmlFor="address" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                  Address
+                  Adresse
                 </label>
                 <input
                   id="address"
                   autoComplete="street-address"
                   className={fieldClass('address')}
-                  placeholder="Street and number"
+                  placeholder="Rue et numéro"
                   value={information.address}
                   onChange={(event) => setInfo('address', event.target.value)}
                 />
@@ -287,7 +287,7 @@ export function CheckoutPage() {
 
               <div>
                 <label htmlFor="complement" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                  Apartment, suite, etc. <span className="normal-case text-noir/40">(optional)</span>
+                  Étage, bureau, etc. <span className="normal-case text-noir/40">(facultatif)</span>
                 </label>
                 <input
                   id="complement"
@@ -301,7 +301,7 @@ export function CheckoutPage() {
               <div className="grid gap-4 sm:grid-cols-3">
                 <div>
                   <label htmlFor="city" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                    City
+                    Ville
                   </label>
                   <input
                     id="city"
@@ -314,7 +314,7 @@ export function CheckoutPage() {
                 </div>
                 <div>
                   <label htmlFor="postalCode" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                    Postal code
+                    Code postal
                   </label>
                   <input
                     id="postalCode"
@@ -327,7 +327,7 @@ export function CheckoutPage() {
                 </div>
                 <div>
                   <label htmlFor="country" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                    Country
+                    Pays
                   </label>
                   <select
                     id="country"
@@ -345,14 +345,14 @@ export function CheckoutPage() {
 
               <div>
                 <label htmlFor="phone" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                  Phone <span className="normal-case text-noir/40">(optional)</span>
+                  Téléphone <span className="normal-case text-noir/40">(facultatif)</span>
                 </label>
                 <input
                   id="phone"
                   type="tel"
                   autoComplete="tel"
                   className="field"
-                  placeholder="For delivery updates"
+                  placeholder="Pour le suivi de la livraison"
                   value={information.phone}
                   onChange={(event) => setInfo('phone', event.target.value)}
                 />
@@ -365,7 +365,7 @@ export function CheckoutPage() {
                   if (validateStep1()) setStep(2)
                 }}
               >
-                Continue to delivery <ArrowRightIcon size={15} />
+                Continuer vers la livraison <ArrowRightIcon size={15} />
               </button>
             </section>
           )}
@@ -374,11 +374,11 @@ export function CheckoutPage() {
           {step === 2 && (
             <section className="flex flex-col gap-6" aria-labelledby="step-2-title">
               <h2 id="step-2-title" className="font-display text-2xl font-light">
-                2 — Delivery
+                2 — Livraison
               </h2>
 
               <div className="border border-noir/12 p-5 text-sm text-noir/70">
-                <p className="text-[11px] uppercase tracking-luxe text-noir/50">Shipping to</p>
+                <p className="text-[11px] uppercase tracking-luxe text-noir/50">Livraison à</p>
                 <p className="mt-2">
                   {information.firstName} {information.lastName}
                   <br />
@@ -397,26 +397,26 @@ export function CheckoutPage() {
                   onClick={() => setStep(1)}
                   className="mt-3 text-[11px] uppercase tracking-wider text-gold-deep underline-offset-4 hover:underline"
                 >
-                  Edit information
+                  Modifier les informations
                 </button>
               </div>
 
               <fieldset className="flex flex-col gap-3">
                 <legend className="mb-1 text-[11px] uppercase tracking-luxe text-noir/55">
-                  Delivery method
+                  Mode de livraison
                 </legend>
                 {(
                   [
                     {
                       id: 'standard',
-                      title: 'Standard delivery',
-                      detail: '2–5 business days · tracked',
-                      price: totals.subtotal >= 150 ? 'Free' : formatPriceFull(9.9),
+                      title: 'Livraison standard',
+                      detail: '2 à 5 jours ouvrés · suivi',
+                      price: totals.subtotal >= 150 ? 'Offert' : formatPriceFull(9.9),
                     },
                     {
                       id: 'express',
-                      title: 'Express delivery',
-                      detail: '1–2 business days · tracked and insured',
+                      title: 'Livraison express',
+                      detail: '1 à 2 jours ouvrés · suivi et assurance',
                       price: formatPriceFull(19.9),
                     },
                   ] as const
@@ -460,7 +460,7 @@ export function CheckoutPage() {
 
               <fieldset className="border border-noir/12 p-5">
                 <legend className="px-1 text-[11px] uppercase tracking-luxe text-noir/55">
-                  Gift options
+                  Options cadeau
                 </legend>
                 <label className="flex items-center gap-3 text-sm text-noir/70">
                   <input
@@ -469,17 +469,17 @@ export function CheckoutPage() {
                     onChange={(event) => setHidePrices(event.target.checked)}
                     className="h-4 w-4 accent-[#C0964B]"
                   />
-                  Hide prices on the parcel (gift)
+                  Masquer les prix sur le colis (cadeau)
                 </label>
                 <label htmlFor="giftNote" className="mt-4 block text-[11px] uppercase tracking-luxe text-noir/55">
-                  Gift message <span className="normal-case text-noir/40">(optional)</span>
+                  Message cadeau <span className="normal-case text-noir/40">(facultatif)</span>
                 </label>
                 <textarea
                   id="giftNote"
                   rows={3}
                   maxLength={200}
                   className="field mt-2 resize-none"
-                  placeholder="A few words for the person receiving this…"
+                  placeholder="Quelques mots pour la personne qui recevra ce colis…"
                   value={giftNote}
                   onChange={(event) => setGiftNote(event.target.value)}
                 />
@@ -488,10 +488,10 @@ export function CheckoutPage() {
 
               <div className="flex flex-wrap gap-3">
                 <button type="button" className="btn-outline" onClick={() => setStep(1)}>
-                  <ArrowLeftIcon size={15} /> Back
+                  <ArrowLeftIcon size={15} /> Retour
                 </button>
                 <button type="button" className="btn-primary" onClick={() => setStep(3)}>
-                  Continue to payment <ArrowRightIcon size={15} />
+                  Continuer vers le paiement <ArrowRightIcon size={15} />
                 </button>
               </div>
             </section>
@@ -501,24 +501,24 @@ export function CheckoutPage() {
           {step === 3 && (
             <section className="flex flex-col gap-6" aria-labelledby="step-3-title">
               <h2 id="step-3-title" className="font-display text-2xl font-light">
-                3 — Payment
+                3 — Paiement
               </h2>
 
               <div className="flex items-start gap-3 border border-gold/40 bg-gold-pale/50 p-4 text-[12px] leading-relaxed text-noir/70">
                 <ShieldIcon size={17} className="mt-0.5 shrink-0 text-gold-deep" />
                 <p>
-                  Payment details are handled by our payment provider (Stripe). Card information is
-                  captured in a secure iframe and is never stored, transmitted to, or visible by
-                  this storefront.
+                  Les informations de paiement sont gérées par notre prestataire (Stripe). Les
+                  données de carte sont saisies dans une iframe sécurisée et ne sont jamais
+                  stockées, transmises ni visibles par cette boutique.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3">
                 {(
                   [
-                    { id: 'card', label: 'Credit / debit card', hint: 'Visa, Mastercard, Amex' },
-                    { id: 'paypal', label: 'PayPal', hint: 'You will be redirected to approve' },
-                    { id: 'applepay', label: 'Apple Pay / Google Pay', hint: 'One-tap express checkout' },
+                    { id: 'card', label: 'Carte bancaire', hint: 'Visa, Mastercard, Amex' },
+                    { id: 'paypal', label: 'PayPal', hint: 'Vous serez redirigé pour confirmer' },
+                    { id: 'applepay', label: 'Apple Pay / Google Pay', hint: 'Paiement express en un geste' },
                   ] as const
                 ).map((method) => {
                   const active = payment.method === method.id
@@ -563,17 +563,17 @@ export function CheckoutPage() {
                 <div className="border border-noir/12 bg-white p-5">
                   <div className="mb-4 flex items-center justify-between gap-3 border-b border-noir/10 pb-3">
                     <span className="text-[11px] uppercase tracking-luxe text-noir/50">
-                      Card details
+                      Coordonnées de carte
                     </span>
                     <span className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gold-deep">
-                      <LockIcon size={12} /> Powered by Stripe
+                      <LockIcon size={12} /> Propulsé par Stripe
                     </span>
                   </div>
 
                   <div className="flex flex-col gap-4">
                     <div>
                       <label htmlFor="cardName" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                        Name on card
+                        Nom sur la carte
                       </label>
                       <input
                         id="cardName"
@@ -590,7 +590,7 @@ export function CheckoutPage() {
 
                     <div>
                       <label htmlFor="cardNumber" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                        Card number
+                        Numéro de carte
                       </label>
                       <input
                         id="cardNumber"
@@ -612,13 +612,13 @@ export function CheckoutPage() {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="expiry" className="mb-2 block text-[11px] uppercase tracking-luxe text-noir/55">
-                          Expiry
+                          Expiration
                         </label>
                         <input
                           id="expiry"
                           inputMode="numeric"
                           autoComplete="cc-exp"
-                          placeholder="MM / YY"
+                          placeholder="MM / AA"
                           className={cn(fieldClass('expiry'), 'num')}
                           value={payment.expiry}
                           onChange={(event) => {
@@ -654,22 +654,22 @@ export function CheckoutPage() {
                   </div>
 
                   <p className="mt-4 border-t border-noir/10 pt-3 text-[11px] leading-relaxed text-noir/45">
-                    Demo fields — in production this block is replaced by a Stripe Element. Nothing
-                    typed here is stored or transmitted.
+                    Champs de démonstration — en production, ce bloc est remplacé par un élément
+                    Stripe. Rien de ce qui est saisi n’est stocké ni transmis.
                   </p>
                 </div>
               )}
 
               {payment.method !== 'card' && (
                 <div className="border border-noir/12 bg-white p-5 text-sm text-noir/65">
-                  You will approve the payment with {payment.method === 'paypal' ? 'PayPal' : 'your wallet'}{' '}
-                  on the next screen. No card details are collected on this site.
+                  Vous validerez le paiement avec {payment.method === 'paypal' ? 'PayPal' : 'votre portefeuille'}{' '}
+                  sur l’écran suivant. Aucune donnée de carte n’est collectée sur ce site.
                 </div>
               )}
 
               <div className="flex flex-wrap gap-3">
                 <button type="button" className="btn-outline" onClick={() => setStep(2)}>
-                  <ArrowLeftIcon size={15} /> Back
+                  <ArrowLeftIcon size={15} /> Retour
                 </button>
                 <button
                   type="button"
@@ -677,14 +677,14 @@ export function CheckoutPage() {
                   onClick={placeOrder}
                   disabled={submitting}
                 >
-                  {submitting ? 'Processing…' : `Pay ${formatPriceFull(totals.total)}`}
+                  {submitting ? 'Traiter le paiement…' : `Payer ${formatPriceFull(totals.total)}`}
                   {!submitting && <LockIcon size={14} />}
                 </button>
               </div>
 
               <p className="text-[11px] leading-relaxed text-noir/45">
-                By confirming you agree to our terms and conditions. This is a demonstration
-                storefront — no real payment is captured.
+                En confirmant, vous acceptez nos conditions générales. Ceci est une boutique de
+                démonstration — aucun paiement réel n’est encaissé.
               </p>
             </section>
           )}
@@ -693,7 +693,7 @@ export function CheckoutPage() {
         {/* Summary */}
         <aside className="lg:col-span-5 xl:col-span-4">
           <div className="sticky top-32 border border-noir/12 bg-white/70 p-6">
-            <h2 className="text-[12px] uppercase tracking-luxe">Your order</h2>
+            <h2 className="text-[12px] uppercase tracking-luxe">Votre commande</h2>
 
             <ul className="mt-5 flex max-h-72 flex-col gap-4 overflow-y-auto pr-1">
               {lines.map((line) => (
@@ -733,17 +733,17 @@ export function CheckoutPage() {
               }}
             >
               <label htmlFor="promo-checkout" className="sr-only">
-                Promo code
+                Code promo
               </label>
               <input
                 id="promo-checkout"
                 className="field py-2.5 text-[13px] uppercase tracking-wider"
-                placeholder="Promo code"
+                placeholder="Code promo"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
               />
               <button type="submit" className="chip shrink-0 px-4">
-                Apply
+                Appliquer
               </button>
             </form>
 
@@ -762,7 +762,7 @@ export function CheckoutPage() {
                   type="button"
                   onClick={removePromo}
                   className="text-noir/50 hover:text-bordeaux"
-                  aria-label="Remove promo code"
+                  aria-label="Supprimer le code promo"
                 >
                   ×
                 </button>
@@ -771,19 +771,19 @@ export function CheckoutPage() {
 
             <dl className="mt-5 space-y-2.5 border-t border-noir/10 pt-5 text-sm">
               <div className="flex justify-between">
-                <dt className="text-noir/60">Subtotal</dt>
+                <dt className="text-noir/60">Sous-total</dt>
                 <dd className="num font-medium">{formatPriceFull(summaryOpen.subtotal)}</dd>
               </div>
               {summaryOpen.discount > 0 && (
                 <div className="flex justify-between text-gold-deep">
-                  <dt>Discount</dt>
+                  <dt>Réduction</dt>
                   <dd className="num">−{formatPriceFull(summaryOpen.discount)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-noir/60">Delivery</dt>
+                <dt className="text-noir/60">Livraison</dt>
                 <dd className="num">
-                  {summaryOpen.shipping === 0 ? 'Free' : formatPriceFull(summaryOpen.shipping)}
+                  {summaryOpen.shipping === 0 ? 'Offert' : formatPriceFull(summaryOpen.shipping)}
                 </dd>
               </div>
               <div className="flex justify-between border-t border-noir/10 pt-3 text-base">
@@ -794,15 +794,15 @@ export function CheckoutPage() {
 
             <ul className="mt-5 space-y-2.5 border-t border-noir/10 pt-4 text-[12px] text-noir/60">
               <li className="flex items-center gap-2.5">
-                <TruckIcon size={16} className="text-gold-deep" /> Estimated delivery: 2–5 business
-                days
+                <TruckIcon size={16} className="text-gold-deep" /> Livraison estimée : 2–5 jours
+                ouvrés
               </li>
               <li className="flex items-center gap-2.5">
-                <ShieldIcon size={15} className="text-gold-deep" /> Easy returns according to our
-                return policy
+                <ShieldIcon size={15} className="text-gold-deep" /> Retours faciles selon notre
+                politique de retours
               </li>
               <li className="flex items-center gap-2.5">
-                <LockIcon size={14} className="text-gold-deep" /> Secure payment
+                <LockIcon size={14} className="text-gold-deep" /> Paiement sécurisé
               </li>
             </ul>
           </div>

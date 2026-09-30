@@ -23,7 +23,7 @@ import {
 } from '../components/ui/Icons'
 
 export function CartPage() {
-  usePage('Your cart | AURELIA', 'Review your AURELIA selection before checkout.')
+  usePage('Votre panier | AURELIA', 'Vérifiez votre sélection AURELIA avant le paiement.')
   const {
     lines,
     setQuantity,
@@ -59,17 +59,18 @@ export function CartPage() {
             <BagIcon size={26} />
           </span>
           <div>
-            <h1 className="font-display text-3xl font-light uppercase">Your cart is empty</h1>
+            <h1 className="font-display text-3xl font-light uppercase">Votre panier est vide</h1>
             <p className="mt-3 text-sm leading-relaxed text-noir/60">
-              Nothing here yet — but the New Year Collection is full of good reasons to start.
+              Rien pour l’instant — mais la Collection du Nouvel An regorge de bonnes raisons de
+              commencer.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/shop" className="btn-primary">
-              Shop the collection
+              Découvrir la collection
             </Link>
             <Link to="/shop?category=gifts" className="btn-outline">
-              Find a gift
+              Trouver un cadeau
             </Link>
           </div>
         </div>
@@ -77,9 +78,9 @@ export function CartPage() {
         <section className="mt-16">
           <SectionHeading
             align="left"
-            eyebrow="Start here"
-            title="A few favourites"
-            subtitle="The pieces our community reaches for first."
+            eyebrow="Commencez ici"
+            title="Quelques coups de cœur"
+            subtitle="Les pièces que notre communauté choisit en premier."
           />
           <div className="mt-8 grid gap-x-6 gap-y-4 sm:grid-cols-2">
             {suggestions.slice(0, 4).map((product) => (
@@ -95,14 +96,14 @@ export function CartPage() {
     <div className="container-luxe py-10 lg:py-16">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-noir/10 pb-6">
         <div>
-          <span className="eyebrow">Your selection</span>
+          <span className="eyebrow">Votre sélection</span>
           <h1 className="mt-3 font-display text-4xl font-light uppercase lg:text-5xl">
-            Your cart
+            Votre panier
           </h1>
         </div>
         <p className="text-[12px] uppercase tracking-wider text-noir/50">
           <span className="num text-noir">{totals.itemCount}</span>{' '}
-          {totals.itemCount === 1 ? 'item' : 'items'}
+          {totals.itemCount === 1 ? 'article' : 'articles'}
         </p>
       </div>
 
@@ -132,7 +133,7 @@ export function CartPage() {
                       {Object.keys(line.options).length > 0 && (
                         <p className="mt-1.5 text-[11px] uppercase tracking-wider text-noir/50">
                           {Object.entries(line.options)
-                            .map(([label, value]) => `${label}: ${value}`)
+                            .map(([label, value]) => `${label} : ${value}`)
                             .join(' · ')}
                         </p>
                       )}
@@ -140,7 +141,7 @@ export function CartPage() {
                     <button
                       type="button"
                       onClick={() => removeItem(line.key)}
-                      aria-label={`Remove ${line.name}`}
+                      aria-label={`Supprimer ${line.name}`}
                       className="text-noir/40 transition-colors hover:text-bordeaux"
                     >
                       <CloseIcon size={17} />
@@ -163,7 +164,7 @@ export function CartPage() {
                       />
                       {line.quantity > 1 && (
                         <span className="text-[11px] text-noir/45 num">
-                          {formatPriceFull(line.unitPrice)} each
+                          {formatPriceFull(line.unitPrice)} l’unité
                         </span>
                       )}
                     </div>
@@ -178,19 +179,19 @@ export function CartPage() {
               to="/shop"
               className="text-[11px] uppercase tracking-wider2 text-noir/60 underline-offset-4 hover:text-gold-deep hover:underline"
             >
-              ← Continue shopping
+              ← Continuer mes achats
             </Link>
             <button
               type="button"
               onClick={() => navigate('/checkout')}
               className="btn-primary"
             >
-              Proceed to checkout
+              Passer au paiement
             </button>
           </div>
 
           <section className="mt-14 border-t border-noir/10 pt-8">
-            <h2 className="font-display text-2xl font-light">You may also like</h2>
+            <h2 className="font-display text-2xl font-light">Produits similaires</h2>
             <div className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2">
               {suggestions.slice(0, 4).map((product) => (
                 <ProductRowCard key={product.id} product={product} />
@@ -201,21 +202,21 @@ export function CartPage() {
 
         <aside className="lg:col-span-5 xl:col-span-4">
           <div className="sticky top-32 border border-noir/12 bg-white/70 p-6">
-            <h2 className="text-[12px] uppercase tracking-luxe">Order summary</h2>
+            <h2 className="text-[12px] uppercase tracking-luxe">Récapitulatif de la commande</h2>
 
             <form onSubmit={onApply} className="mt-5 flex gap-2">
               <label htmlFor="promo-page" className="sr-only">
-                Promo code
+                Code promo
               </label>
               <input
                 id="promo-page"
                 className="field py-2.5 text-[13px] uppercase tracking-wider"
-                placeholder="Promo code"
+                placeholder="Code promo"
                 value={code}
                 onChange={(event) => setCode(event.target.value)}
               />
               <button type="submit" className="chip shrink-0 px-4">
-                Apply
+                Appliquer
               </button>
             </form>
 
@@ -231,7 +232,7 @@ export function CartPage() {
             )}
             {!feedback && (
               <p className="mt-2 text-[11px] text-noir/45">
-                Demo codes: <span className="uppercase">AURELIA10</span>,{' '}
+                Codes de démonstration : <span className="uppercase">AURELIA10</span>,{' '}
                 <span className="uppercase">NEWYEAR15</span>,{' '}
                 <span className="uppercase">FREESHIP</span>
               </p>
@@ -246,7 +247,7 @@ export function CartPage() {
                   type="button"
                   onClick={removePromo}
                   className="text-noir/50 hover:text-bordeaux"
-                  aria-label="Remove promo code"
+                  aria-label="Supprimer le code promo"
                 >
                   <CloseIcon size={14} />
                 </button>
@@ -255,13 +256,13 @@ export function CartPage() {
 
             <fieldset className="mt-6">
               <legend className="mb-3 text-[11px] uppercase tracking-luxe text-noir/50">
-                Delivery
+                Livraison
               </legend>
               <div className="flex flex-col gap-2">
                 {(
                   [
-                    { id: 'standard', label: 'Standard · 2–5 business days', price: 'Free over $150' },
-                    { id: 'express', label: 'Express · 1–2 business days', price: '$19.90' },
+                    { id: 'standard', label: 'Standard · 2–5 jours ouvrés', price: 'Offert dès 150 €' },
+                    { id: 'express', label: 'Express · 1–2 jours ouvrés', price: '19,90 €' },
                   ] as const
                 ).map((method) => (
                   <label
@@ -311,25 +312,25 @@ export function CartPage() {
 
             <dl className="mt-6 space-y-2.5 border-t border-noir/10 pt-5 text-sm">
               <div className="flex justify-between">
-                <dt className="text-noir/60">Subtotal</dt>
+                <dt className="text-noir/60">Sous-total</dt>
                 <dd className="num font-medium">{formatPriceFull(totals.subtotal)}</dd>
               </div>
               {totals.discount > 0 && (
                 <div className="flex justify-between text-gold-deep">
-                  <dt>Discount</dt>
+                  <dt>Réduction</dt>
                   <dd className="num">−{formatPriceFull(totals.discount)}</dd>
                 </div>
               )}
               {totals.savings > 0 && (
                 <div className="flex justify-between text-bordeaux">
-                  <dt>You saved</dt>
+                  <dt>Vous avez économisé</dt>
                   <dd className="num">−{formatPriceFull(totals.savings)}</dd>
                 </div>
               )}
               <div className="flex justify-between">
-                <dt className="text-noir/60">Delivery</dt>
+                <dt className="text-noir/60">Livraison</dt>
                 <dd className="num">
-                  {totals.shipping === 0 ? 'Free' : formatPriceFull(totals.shipping)}
+                  {totals.shipping === 0 ? 'Offert' : formatPriceFull(totals.shipping)}
                 </dd>
               </div>
               <div className="flex justify-between border-t border-noir/10 pt-3 text-base">
@@ -343,33 +344,35 @@ export function CartPage() {
               className="btn-primary mt-6 w-full"
               onClick={() => navigate('/checkout')}
             >
-              Proceed to checkout
+              Passer au paiement
             </button>
 
             <ul className="mt-5 space-y-2.5 text-[12px] text-noir/60">
               <li className="flex items-center gap-2.5">
-                <LockIcon size={14} className="text-gold-deep" /> Secure checkout
+                <LockIcon size={14} className="text-gold-deep" /> Paiement sécurisé
               </li>
               <li className="flex items-center gap-2.5">
-                <TruckIcon size={16} className="text-gold-deep" /> Estimated delivery: 2–5 business
-                days
+                <TruckIcon size={16} className="text-gold-deep" /> Livraison estimée : 2–5 jours
+                ouvrés
               </li>
               <li className="flex items-center gap-2.5">
-                <ShieldIcon size={15} className="text-gold-deep" /> Easy returns within 30 days
+                <ShieldIcon size={15} className="text-gold-deep" /> Retours faciles sous 30 jours
               </li>
             </ul>
 
             <p className="mt-5 border-t border-noir/10 pt-4 text-[11px] leading-relaxed text-noir/45">
-              Demo storefront — no payment is processed and no card details are stored.
+              Boutique de démonstration — aucun paiement n’est traité et aucune donnée de carte
+              n’est conservée.
             </p>
           </div>
         </aside>
       </div>
 
       <Reveal className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-noir/10 pt-6">
-        <ArrowLink to="/shop?view=new">New arrivals</ArrowLink>
+        <ArrowLink to="/shop?view=new">Nouveautés</ArrowLink>
         <span className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-noir/50">
-          <CheckIcon size={14} className="text-gold-deep" /> Free gift wrapping on every order
+          <CheckIcon size={14} className="text-gold-deep" /> Emballage cadeau offert pour chaque
+          commande
         </span>
       </Reveal>
     </div>
