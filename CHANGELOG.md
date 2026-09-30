@@ -7,6 +7,14 @@ et le projet suit le [Versionnement sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-30
+
+### Fixed
+
+- Le fil d’Ariane de la fiche produit, le surtitre de la fiche et du produit phare, et les
+  résultats de recherche affichent désormais le **nom français de la catégorie** au lieu du
+  slug anglais (« Accessoires » au lieu de « ACCESSORIES »).
+
 ## [0.2.0] - 2026-09-30
 
 ### Added
@@ -55,6 +63,7 @@ et le projet suit le [Versionnement sémantique](https://semver.org/lang/fr/).
   `public/images/CREDITS.md`.
 - Configuration Git et dépôt GitHub `sergegbetin/Aurelia`.
 
-[Unreleased]: https://github.com/sergegbetin/Aurelia/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/sergegbetin/Aurelia/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/sergegbetin/Aurelia/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/sergegbetin/Aurelia/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/sergegbetin/Aurelia/releases/tag/v0.1.0
